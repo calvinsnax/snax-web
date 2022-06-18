@@ -7,7 +7,7 @@ import { graphql, PageProps } from "gatsby";
 /**
  * Internal imports
  */
-import Layout from "../components/base/Layout";
+import { Layout } from "../components/base";
 
 export interface IContent {
   slug: string;
