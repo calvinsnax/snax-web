@@ -1,6 +1,13 @@
+/**
+ * External imports
+ */
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import Layout from "../components/Layout";
+
+/**
+ * Internal imports
+ */
+import Layout from "../components/base/Layout";
 
 export interface IContent {
   slug: string;

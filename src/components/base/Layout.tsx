@@ -1,14 +1,29 @@
-import * as React from "react";
+/**
+ * External imports
+ */
+import React, { useMemo } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import Helmet from "react-helmet";
 
+/**
+ * Internal imports
+ */
+import { GlobalStyles } from "../../lib/styles/styles";
+
 type Props = {
-  pageTitle: string;
+  pageTitle?: string;
   children: React.ReactNode;
 };
 
 const Layout = ({ pageTitle, children }: Props) => {
-  const data = useStaticQuery(graphql`
+  type SiteDataType = {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+  };
+  const data = useStaticQuery<SiteDataType>(graphql`
     query {
       site {
         siteMetadata {
@@ -18,12 +33,16 @@ const Layout = ({ pageTitle, children }: Props) => {
     }
   `);
 
+  const title = useMemo(() => {
+    if (!pageTitle) return data.site.siteMetadata.title;
+
+    return `${pageTitle} | ${data.site.siteMetadata.title}`;
+  }, [pageTitle, data.site.siteMetadata.title]);
+
   return (
     <div>
-      <Helmet
-        title={`${pageTitle} | ${data.site.siteMetadata.title}`}
-        defer={false}
-      />
+      <Helmet title={title} defer={false} />
+      <GlobalStyles />
 
       <header>{data.site.siteMetadata.title}</header>
       <nav>
