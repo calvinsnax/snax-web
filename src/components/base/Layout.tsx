@@ -15,7 +15,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ pageTitle, children }: Props) => {
+export const Layout = ({ pageTitle, children }: Props) => {
   type SiteDataType = {
     site: {
       siteMetadata: {
@@ -60,4 +60,3 @@ const Layout = ({ pageTitle, children }: Props) => {
     </div>
   );
 };
-export default Layout;
