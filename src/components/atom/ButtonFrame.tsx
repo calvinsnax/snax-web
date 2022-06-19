@@ -24,14 +24,14 @@ const ButtonSizeXlarge = css`
   height: 58px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  border-radius: 10px;
+  border-radius: 1rem;
 `;
 const ButtonSizeLarge = css`
   font-size: 1rem;
   height: 3rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  border-radius: 10px;
+  padding-left: 1.375rem;
+  padding-right: 1.375rem;
+  border-radius: 1rem;
 `;
 const ButtonSizeMedium = css``;
 const ButtonSizeSmall = css`

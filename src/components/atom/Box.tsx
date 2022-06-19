@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import styled from "styled-components";
 import {
   compose,
@@ -29,7 +30,8 @@ type Props = PositionProps &
   BorderProps &
   FlexboxProps &
   LayoutProps &
-  ColorProps;
+  ColorProps &
+  Pick<CSSProperties, "wordBreak">;
 
 export const Box = styled.div<Props>`
   ${compose(
@@ -43,4 +45,6 @@ export const Box = styled.div<Props>`
     layout,
     color
   )}
+
+  ${({ wordBreak }) => !!wordBreak && `word-break: ${wordBreak};`}
 `;

@@ -15,6 +15,7 @@ import {
   colorGrey,
   headerHeight,
   headerSafeArea,
+  articleWidth,
 } from "./theme";
 
 const StyledCss = css`
@@ -25,6 +26,7 @@ const StyledCss = css`
     --nav-height: 58px;
 
     --container-width: ${containerWidth}px;
+    --article-width: ${articleWidth}px;
     --spacing-base: 1.5rem;
 
     --border-radius-basic: 0.875rem;

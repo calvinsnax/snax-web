@@ -59,37 +59,41 @@ const Template = (props: PageProps<DataType>) => {
             color="white"
             background={rgba("black", 0.2)}
           >
-            <Box
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-              textAlign="center"
-            >
+            <Container isArticle>
               <Box
-                as="p"
-                display="inline-flex"
-                p="0.5rem 1rem"
-                color="var(--color-grey-500)"
-                fontSize={3}
-                fontWeight={700}
-                mb={3}
-                background={rgba("white", 1)}
-                borderRadius="2rem"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                textAlign="center"
               >
-                {frontmatter.category}
+                <Box
+                  as="p"
+                  display="inline-flex"
+                  p="0.5rem 1rem"
+                  color={
+                    frontmatter.categoryTextColor || "var(--color-grey-600)"
+                  }
+                  fontSize={3}
+                  fontWeight={700}
+                  mb={3}
+                  background={frontmatter.categoryBackgroundColor || "white"}
+                  borderRadius="2rem"
+                >
+                  {frontmatter.category}
+                </Box>
+                <Box as="h1" fontSize={6} fontWeight={700} mb={4}>
+                  {frontmatter.title}
+                </Box>
+                <Box as="time" opacity={0.5}>
+                  {frontmatter.date}
+                </Box>
               </Box>
-              <Box as="h1" fontSize={6} fontWeight={700} mb={4}>
-                {frontmatter.title}
-              </Box>
-              <Box as="time" opacity={0.5}>
-                {frontmatter.date}
-              </Box>
-            </Box>
+            </Container>
           </Box>
         </CoverArea>
 
-        <Container>
+        <Container isArticle>
           <ContentArea
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: html }}
@@ -109,6 +113,8 @@ export const pageQuery = graphql`
         slug
         title
         category
+        categoryTextColor
+        categoryBackgroundColor
         featuredImage {
           publicURL
           name
@@ -141,6 +147,7 @@ const ContentArea = styled.div`
 
   font-size: 1.125rem;
   line-height: 1.75;
+  word-break: keep-all;
 
   h1,
   h2,

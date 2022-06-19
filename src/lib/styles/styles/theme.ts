@@ -1,4 +1,5 @@
 export const containerWidth = 1120;
+export const articleWidth = 780;
 
 export const colorBrand = "#2562FF";
 

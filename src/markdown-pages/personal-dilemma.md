@@ -1,9 +1,11 @@
 ---
-slug: "/blog/my-first-post"
+slug: "/blog/personal-dilemma"
 category: "story"
 date: "2021-02-05"
 title: "하고 싶은 일과 해야하는 일의 사이"
-featuredImage: "../images/forest.jpg"
+featuredImage: "../images/personal-dilemma/thumbnail.jpg"
+categoryTextColor: "white"
+categoryBackgroundColor: "#ac5a1e"
 ---
 
 # 중고\_사회초년생

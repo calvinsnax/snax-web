@@ -3,13 +3,13 @@
  */
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
+import { rgba } from "polished";
 import { Link } from "gatsby";
 
 /**
  * Internal imports
  */
 import { Box, Container } from "../atom";
-import { rgba } from "polished";
 import { headerDepth } from "../../lib/styles/styles";
 
 export const HeaderContext = createContext({
@@ -51,27 +51,25 @@ export const Header = (props: HeaderProps) => {
   return (
     <HeaderContext.Provider value={memorizedContextValue}>
       <StyledHeader overlay={overlay} isScrolled={isScrolled}>
-        <Container>
+        <Container expand>
           <Box
             display="flex"
             alignItems="center"
             justifyContent="space-between"
             height="100%"
           >
-            <LogoArea to="/">
-              <Box fontSize="1.5rem" fontWeight={800} fontStyle="italic">
-                SNAX
-              </Box>
+            <LogoArea overlay={overlay} isScrolled={isScrolled} to="/">
+              Snax
             </LogoArea>
 
             <Box display="flex" alignItems="center" height="100%">
               <Nav>
                 <ul>
                   <li>
-                    <Link to="/cow_and_dog">소개</Link>
+                    <Link to="/cow-and-dog">소개</Link>
                   </li>
                   <li>
-                    <Link to="/blog">둘러보기</Link>
+                    <Link to="/blog">블로그</Link>
                   </li>
                 </ul>
               </Nav>
@@ -128,13 +126,31 @@ const StyledHeader = styled.header<CommonStyledProps>`
   }}
 `;
 
-const LogoArea = styled(Link)`
+const LogoArea = styled(Link)<CommonStyledProps>`
   display: flex;
   align-items: center;
+  padding: 0.375rem 1rem;
   margin-right: 3rem;
 
-  color: var(--header-text-color);
   text-decoration: none;
+  border-radius: 3rem;
+
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-style: italic;
+
+  color: white;
+  background-color: var(--color-grey-900);
+
+  /* ${({ overlay, isScrolled }) => {
+    if (!overlay) return null;
+    if (isScrolled) return null;
+
+    return `
+      color: var(--color-grey-900);
+      background-color: var(--header-text-color);
+    `;
+  }} */
 `;
 
 const Nav = styled.div`
@@ -150,9 +166,15 @@ const Nav = styled.div`
       & > a {
         display: block;
         color: var(--header-text-color);
-        font-size: 1rem;
+        font-size: 1.125rem;
         font-weight: 700;
         text-decoration: none;
+
+        transition: 0.2s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
       }
     }
   }
