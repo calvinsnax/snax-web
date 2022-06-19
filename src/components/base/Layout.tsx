@@ -9,13 +9,16 @@ import Helmet from "react-helmet";
  * Internal imports
  */
 import { GlobalStyles } from "../../lib/styles/styles";
+import { Header, HeaderProps } from "./Header";
+import styled from "styled-components";
 
-type Props = {
+export interface LayoutProps extends HeaderProps {
   pageTitle?: string;
   children: React.ReactNode;
-};
+}
 
-export const Layout = ({ pageTitle, children }: Props) => {
+export const Layout = (props: LayoutProps) => {
+  const { pageTitle, children, overlay } = props;
   type SiteDataType = {
     site: {
       siteMetadata: {
@@ -40,23 +43,23 @@ export const Layout = ({ pageTitle, children }: Props) => {
   }, [pageTitle, data.site.siteMetadata.title]);
 
   return (
-    <div>
+    <LayoutWrap overlay={overlay}>
       <Helmet title={title} defer={false} />
       <GlobalStyles />
+      <Header overlay={overlay} />
 
-      <header>{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <main>{children}</main>
-    </div>
+      <Main>{children}</Main>
+    </LayoutWrap>
   );
 };
+
+const LayoutWrap = styled.div<Partial<LayoutProps>>`
+  ${({ overlay }) => {
+    if (!overlay) return `padding-top: var(--header-safe-area);`;
+    return null;
+  }}
+`;
+
+const Main = styled.main`
+  background-color: white;
+`;

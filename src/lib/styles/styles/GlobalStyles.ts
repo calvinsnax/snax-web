@@ -1,17 +1,26 @@
-import reset from 'styled-reset';
-import { createGlobalStyle, css } from 'styled-components';
-import { mix, rgba } from 'polished';
+/**
+ * External imports
+ */
+import reset from "styled-reset";
+import { mix, rgba } from "polished";
+import { createGlobalStyle, css } from "styled-components";
+
+/**
+ * Internal imports
+ */
 import {
   containerWidth,
   colorBrand,
   fontFamily,
   colorGrey,
   headerHeight,
-} from './theme';
+  headerSafeArea,
+} from "./theme";
 
 const StyledCss = css`
   :host,
   :root {
+    --header-safe-area: ${headerSafeArea}px;
     --header-height: ${headerHeight}px;
     --nav-height: 58px;
 
@@ -20,16 +29,16 @@ const StyledCss = css`
 
     --border-radius-basic: 0.875rem;
 
-    --color-primary-50: ${mix(0.95, '#ffffff', colorBrand)};
-    --color-primary-100: ${mix(0.9, '#ffffff', colorBrand)};
-    --color-primary-200: ${mix(0.5, '#ffffff', colorBrand)};
-    --color-primary-300: ${mix(0.1, '#ffffff', colorBrand)};
+    --color-primary-50: ${mix(0.95, "#ffffff", colorBrand)};
+    --color-primary-100: ${mix(0.9, "#ffffff", colorBrand)};
+    --color-primary-200: ${mix(0.5, "#ffffff", colorBrand)};
+    --color-primary-300: ${mix(0.1, "#ffffff", colorBrand)};
     --color-primary-400: ${colorBrand};
-    --color-primary-500: ${mix(0.1, '#000000', colorBrand)};
-    --color-primary-600: ${mix(0.2, '#000000', colorBrand)};
-    --color-primary-700: ${mix(0.3, '#000000', colorBrand)};
-    --color-primary-800: ${mix(0.4, '#000000', colorBrand)};
-    --color-primary-900: ${mix(0.5, '#000000', colorBrand)};
+    --color-primary-500: ${mix(0.1, "#000000", colorBrand)};
+    --color-primary-600: ${mix(0.2, "#000000", colorBrand)};
+    --color-primary-700: ${mix(0.3, "#000000", colorBrand)};
+    --color-primary-800: ${mix(0.4, "#000000", colorBrand)};
+    --color-primary-900: ${mix(0.5, "#000000", colorBrand)};
 
     --color-grey-50: ${colorGrey[50]};
     --color-grey-100: ${colorGrey[100]};
