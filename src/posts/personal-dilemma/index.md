@@ -1,9 +1,9 @@
 ---
-slug: "/blog/personal-dilemma"
+slug: "/personal-dilemma"
 category: "story"
 date: "2021-02-05"
 title: "하고 싶은 일과 해야하는 일의 사이"
-featuredImage: "../images/personal-dilemma/thumbnail.jpg"
+featuredImage: "./thumbnail.jpg"
 categoryTextColor: "white"
 categoryBackgroundColor: "#ac5a1e"
 ---

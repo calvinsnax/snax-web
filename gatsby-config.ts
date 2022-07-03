@@ -25,9 +25,27 @@ const config: GatsbyConfig = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          // posts: require.resolve("./src/components/PostsLayout.ts"),
+          // default: require.resolve("./src/components/Layout.tsx"),
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-remark-images",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -47,11 +65,10 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/markdown-pages`,
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
       },
     },
-    `gatsby-transformer-remark`,
   ],
 };
 

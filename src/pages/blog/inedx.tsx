@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Layout } from "../components/base";
-import { Container } from "../components/atom";
-import { PostList } from "../components/post";
+import { Layout } from "../../components/base";
+import { Container } from "../../components/atom";
+import { PostList } from "../../components/post";
 
 const BlogPage = () => {
   return (

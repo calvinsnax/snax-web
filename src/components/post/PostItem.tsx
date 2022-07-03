@@ -2,11 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { rgba } from "polished";
 import { Link } from "gatsby";
-
-import { IContent } from "../../lib/types/contentTypes";
 import { Box } from "../atom";
 
-type PostItemProps = Partial<IContent>;
+type PostItemProps = Partial<Queries.MdxFrontmatter>;
 
 export const PostItem = (props: PostItemProps) => {
   const {
@@ -21,8 +19,11 @@ export const PostItem = (props: PostItemProps) => {
 
   return (
     <Li>
-      <ItemLink to={slug ?? "/404"}>
-        <Thumbnail src={featuredImage?.publicURL} alt={featuredImage?.name} />
+      <ItemLink to={slug ? "/blog" + slug : "/404"}>
+        <Thumbnail
+          src={featuredImage?.publicURL ?? ""}
+          alt={featuredImage?.name}
+        />
 
         <Box
           position="absolute"

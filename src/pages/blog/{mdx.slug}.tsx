@@ -2,37 +2,32 @@
  * External imports
  */
 import React from "react";
+import styled from "styled-components";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, PageProps } from "gatsby";
+import { rgba } from "polished";
 
 /**
  * Internal imports
  */
-import { Layout } from "../components/base";
-import { Box, Container } from "../components/atom";
-import { IContent } from "../lib/types/contentTypes";
-import styled from "styled-components";
-import { rgba } from "polished";
-import { colorGrey } from "../lib/styles/styles";
+import { Layout } from "../../components/base";
+import { colorGrey } from "../../lib/styles/styles";
+import { Box, Container } from "../../components/atom";
+import { PostArticle } from "../../components/post";
 
-type DataType = {
-  markdownRemark: {
-    frontmatter: IContent;
-    html: string;
-  };
-};
-
-const Template = (props: PageProps<DataType>) => {
+export default function BlogPost(
+  props: PageProps<Queries.getMdxPostByIdQueryQuery>
+) {
   const { data } = props;
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+  const { mdx } = data;
 
   return (
-    <Layout pageTitle={frontmatter.title} overlay>
+    <Layout pageTitle={mdx?.frontmatter?.title} overlay>
       <article>
         <CoverArea>
           <img
-            src={frontmatter.featuredImage.publicURL}
-            alt={frontmatter.featuredImage.name}
+            src={mdx?.frontmatter?.featuredImage?.publicURL ?? ""}
+            alt={mdx?.frontmatter?.featuredImage?.name}
           />
 
           <Box
@@ -72,21 +67,24 @@ const Template = (props: PageProps<DataType>) => {
                   display="inline-flex"
                   p="0.5rem 1rem"
                   color={
-                    frontmatter.categoryTextColor || "var(--color-grey-600)"
+                    mdx?.frontmatter?.categoryTextColor ||
+                    "var(--color-grey-600)"
                   }
                   fontSize={3}
                   fontWeight={700}
                   mb={3}
-                  background={frontmatter.categoryBackgroundColor || "white"}
+                  background={
+                    mdx?.frontmatter?.categoryBackgroundColor || "white"
+                  }
                   borderRadius="2rem"
                 >
-                  {frontmatter.category}
+                  {mdx?.frontmatter?.category}
                 </Box>
                 <Box as="h1" fontSize={6} fontWeight={700} mb={4}>
-                  {frontmatter.title}
+                  {mdx?.frontmatter?.title}
                 </Box>
                 <Box as="time" opacity={0.5}>
-                  {frontmatter.date}
+                  {mdx?.frontmatter?.date}
                 </Box>
               </Box>
             </Container>
@@ -94,20 +92,18 @@ const Template = (props: PageProps<DataType>) => {
         </CoverArea>
 
         <Container isArticle>
-          <ContentArea
-            className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          <PostArticle>
+            <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
+          </PostArticle>
         </Container>
       </article>
     </Layout>
   );
-};
+}
 
 export const pageQuery = graphql`
-  query ($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
+  query getMdxPostByIdQuery($id: String) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         date(locale: "ko", formatString: "YYYY.MM.DD")
         slug
@@ -120,6 +116,7 @@ export const pageQuery = graphql`
           name
         }
       }
+      body
     }
   }
 `;
@@ -174,5 +171,3 @@ const ContentArea = styled.div`
     margin-bottom: 2rem;
   }
 `;
-
-export default Template;

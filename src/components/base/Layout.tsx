@@ -2,15 +2,15 @@
  * External imports
  */
 import React, { useMemo } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import Helmet from "react-helmet";
+import styled from "styled-components";
 
 /**
  * Internal imports
  */
 import { GlobalStyles } from "../../lib/styles/styles";
 import { Header, HeaderProps } from "./Header";
-import styled from "styled-components";
 
 export interface LayoutProps extends HeaderProps {
   pageTitle?: string;
