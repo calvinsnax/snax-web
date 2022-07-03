@@ -29,16 +29,15 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          // posts: require.resolve("./src/components/PostsLayout.ts"),
-          // default: require.resolve("./src/components/Layout.tsx"),
-        },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
             },
+          },
+          {
+            resolve: `gatsby-remark-highlight-code`,
           },
         ],
       },

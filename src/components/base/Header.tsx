@@ -166,7 +166,7 @@ const Nav = styled.div`
       & > a {
         display: block;
         color: var(--header-text-color);
-        font-size: 1.125rem;
+        font-size: 1rem;
         font-weight: 700;
         text-decoration: none;
 
