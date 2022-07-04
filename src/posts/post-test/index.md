@@ -4,8 +4,8 @@ category: "story"
 date: "2022-07-03"
 title: "새로운 라우팅 스트럭처"
 featuredImage: "./thumbnail.jpg"
-categoryTextColor: "white"
-categoryBackgroundColor: "#ac5a1e"
+# categoryTextColor: "white"
+# categoryBackgroundColor: "#ac5a1e"
 ---
 
 # 라우터 설정

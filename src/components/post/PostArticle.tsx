@@ -16,6 +16,8 @@ export const PostArticle = (props: PostArticleProps) => {
     h2: H2,
     h3: H3,
     h4: H4,
+    h5: H5,
+    h6: H6,
     p: Paragraph,
     ul: Ul,
     code: Code,
@@ -69,9 +71,24 @@ const H4 = styled.h4`
   ${commonHeadingStyle}
   font-size: 1.25rem;
 `;
+const H5 = styled.h5`
+  ${commonHeadingStyle}
+  font-size: 1rem;
+`;
+const H6 = styled.h6`
+  ${commonHeadingStyle}
+  color: var(--color-grey-500);
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+`;
 
 const Paragraph = styled.p`
   margin-bottom: 2rem;
+
+  & > span.gatsby-resp-image-wrapper {
+    margin-bottom: -1rem;
+  }
 `;
 
 const Code = styled.code`

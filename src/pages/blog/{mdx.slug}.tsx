@@ -80,7 +80,13 @@ export default function BlogPost(
                 >
                   {mdx?.frontmatter?.category}
                 </Box>
-                <Box as="h1" fontSize={6} fontWeight={700} mb={4}>
+                <Box
+                  as="h1"
+                  fontSize={6}
+                  fontWeight={700}
+                  mb={4}
+                  wordBreak="keep-all"
+                >
                   {mdx?.frontmatter?.title}
                 </Box>
                 <Box as="time" opacity={0.5}>
