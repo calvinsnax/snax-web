@@ -52,7 +52,15 @@ export const PostItem = (props: PostItemProps) => {
           >
             {category}
           </Box>
-          <Box as="h4" fontSize={6} fontWeight={700} mb={4}>
+          <Box
+            as="h4"
+            mb={4}
+            mx={6}
+            fontSize={6}
+            fontWeight={700}
+            wordBreak="keep-all"
+            textAlign="center"
+          >
             {title}
           </Box>
           <Box as="time" fontSize={2} opacity={0.5}>
