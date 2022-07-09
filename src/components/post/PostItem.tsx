@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { rgba } from "polished";
 import { Link } from "gatsby";
+
 import { Box } from "../atom";
 
 type PostItemProps = Partial<Queries.MdxFrontmatter>;
@@ -15,15 +16,18 @@ export const PostItem = (props: PostItemProps) => {
     category,
     categoryBackgroundColor,
     categoryTextColor,
+    backgroundColor,
   } = props;
 
   return (
     <Li>
-      <ItemLink to={slug ? "/blog" + slug : "/404"}>
-        <Thumbnail
-          src={featuredImage?.publicURL ?? ""}
-          alt={featuredImage?.name}
-        />
+      <ItemLink
+        to={slug ? "/blog" + slug : "/404"}
+        backgroundColor={backgroundColor ?? ""}
+      >
+        {!!featuredImage?.publicURL && (
+          <Thumbnail src={featuredImage?.publicURL} alt={featuredImage?.name} />
+        )}
 
         <Box
           position="absolute"
@@ -72,11 +76,7 @@ export const PostItem = (props: PostItemProps) => {
   );
 };
 
-const Li = styled.li`
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-`;
+const Li = styled.li``;
 
 const Thumbnail = styled.img`
   position: absolute;
@@ -88,7 +88,7 @@ const Thumbnail = styled.img`
   object-position: center;
 `;
 
-const ItemLink = styled(Link)`
+const ItemLink = styled(Link)<{ backgroundColor?: string }>`
   position: relative;
   display: flex;
   width: 100%;
@@ -102,18 +102,19 @@ const ItemLink = styled(Link)`
   font-weight: 700;
   text-decoration: none;
 
-  transition: 0.4s ease;
+  ${({ backgroundColor }) =>
+    !!backgroundColor &&
+    `
+    background-color: ${backgroundColor};
+  `}
 
-  & > ${Thumbnail} {
-    transition: 0.4s ease;
-  }
-
-  & > *:not(${Thumbnail}) {
+  &,
+  & > ${Thumbnail}, & > *:not(${Thumbnail}) {
     transition: 0.4s ease;
   }
 
   &:hover {
-    transform: scale(1.01);
+    transform: scale(0.98);
     & > ${Thumbnail} {
       transform: scale(1.1);
     }

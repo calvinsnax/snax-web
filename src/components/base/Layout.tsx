@@ -15,10 +15,11 @@ import { Header, HeaderProps } from "./Header";
 export interface LayoutProps extends HeaderProps {
   pageTitle?: string;
   children: React.ReactNode;
+  background?: string;
 }
 
 export const Layout = (props: LayoutProps) => {
-  const { pageTitle, children, overlay } = props;
+  const { pageTitle, children, $overlay, background } = props;
   type SiteDataType = {
     site: {
       siteMetadata: {
@@ -43,23 +44,24 @@ export const Layout = (props: LayoutProps) => {
   }, [pageTitle, data.site.siteMetadata.title]);
 
   return (
-    <LayoutWrap overlay={overlay}>
+    <LayoutWrap $overlay={$overlay}>
       <Helmet title={title} defer={false} />
       <GlobalStyles />
-      <Header overlay={overlay} />
+      <Header $overlay={$overlay} />
 
-      <Main>{children}</Main>
+      <Main background={background}>{children}</Main>
     </LayoutWrap>
   );
 };
 
 const LayoutWrap = styled.div<Partial<LayoutProps>>`
-  ${({ overlay }) => {
-    if (!overlay) return `padding-top: var(--header-safe-area);`;
+  ${({ $overlay }) => {
+    if (!$overlay) return `padding-top: var(--header-safe-area);`;
     return null;
   }}
 `;
 
-const Main = styled.main`
+const Main = styled.main<Partial<LayoutProps>>`
   background-color: white;
+  ${({ background }) => !!background && `background-color: ${background};`}
 `;

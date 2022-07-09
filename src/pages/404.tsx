@@ -9,7 +9,7 @@ const NotFoundPage = () => {
   const handleClickHome = () => navigate("/");
 
   return (
-    <Layout pageTitle="404" overlay>
+    <Layout pageTitle="404" $overlay>
       <Box
         position="relative"
         display="flex"

@@ -1,43 +1,31 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import styled from "styled-components";
 
-import { Box } from "../atom";
 import { PostItem } from "./PostItem";
+import { useBlog } from "../../hooks/useBlog";
 
 export const PostList = () => {
-  const { allMdx } = useStaticQuery<Queries.getPostsQuery>(graphql`
-    query getPosts {
-      allMdx(sort: { order: DESC, fields: frontmatter___date }) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              slug
-              category
-              categoryTextColor
-              categoryBackgroundColor
-              date(locale: "ko", formatString: "YYYY.MM.DD")
-              featuredImage {
-                publicURL
-                name
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-  const { edges } = allMdx;
+  const posts = useBlog();
 
   return (
-    <Box as="ul" py={6}>
-      {edges.map((post) => (
+    <Ul>
+      {posts.map((post) => (
         <PostItem
           key={post.node.id}
           {...(post.node.frontmatter as Queries.MdxFrontmatter)}
         />
       ))}
-    </Box>
+    </Ul>
   );
 };
+
+const Ul = styled.ul`
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  & > li {
+    &:not(:last-child) {
+      margin-bottom: 0.375rem;
+    }
+  }
+`;

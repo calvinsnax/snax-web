@@ -1,7 +1,8 @@
-import { MDXProvider } from "@mdx-js/react";
 import React from "react";
+import { MDXProvider } from "@mdx-js/react";
 import styled, { css } from "styled-components";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+
 deckDeckGoHighlightElement();
 
 interface PostArticleProps {

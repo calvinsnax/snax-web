@@ -22,13 +22,15 @@ export default function BlogPost(
   const { mdx } = data;
 
   return (
-    <Layout pageTitle={mdx?.frontmatter?.title} overlay>
+    <Layout pageTitle={mdx?.frontmatter?.title} $overlay>
       <article>
-        <CoverArea>
-          <img
-            src={mdx?.frontmatter?.featuredImage?.publicURL ?? ""}
-            alt={mdx?.frontmatter?.featuredImage?.name}
-          />
+        <CoverArea backgroundColor={mdx?.frontmatter?.backgroundColor ?? ""}>
+          {!!mdx?.frontmatter?.featuredImage?.publicURL && (
+            <img
+              src={mdx?.frontmatter?.featuredImage?.publicURL}
+              alt={mdx?.frontmatter?.featuredImage?.name}
+            />
+          )}
 
           <Box
             position="absolute"
@@ -117,6 +119,7 @@ export const pageQuery = graphql`
         category
         categoryTextColor
         categoryBackgroundColor
+        backgroundColor
         featuredImage {
           publicURL
           name
@@ -127,11 +130,17 @@ export const pageQuery = graphql`
   }
 `;
 
-const CoverArea = styled.div`
+const CoverArea = styled.div<{ backgroundColor?: string }>`
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+
+  ${({ backgroundColor }) =>
+    !!backgroundColor &&
+    `
+    background-color: ${backgroundColor};
+  `}
 
   & > img {
     position: absolute;

@@ -17,11 +17,11 @@ export const HeaderContext = createContext({
 });
 
 export interface HeaderProps {
-  overlay?: boolean;
+  $overlay?: boolean;
 }
 
 export const Header = (props: HeaderProps) => {
-  const { overlay } = props;
+  const { $overlay } = props;
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -50,7 +50,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <HeaderContext.Provider value={memorizedContextValue}>
-      <StyledHeader overlay={overlay} isScrolled={isScrolled}>
+      <StyledHeader $overlay={$overlay} $isScrolled={isScrolled}>
         <Container expand>
           <Box
             display="flex"
@@ -58,7 +58,7 @@ export const Header = (props: HeaderProps) => {
             justifyContent="space-between"
             height="100%"
           >
-            <LogoArea overlay={overlay} isScrolled={isScrolled} to="/">
+            <LogoArea $overlay={$overlay} $isScrolled={isScrolled} to="/">
               Snax
             </LogoArea>
 
@@ -82,7 +82,7 @@ export const Header = (props: HeaderProps) => {
 };
 
 interface CommonStyledProps extends HeaderProps {
-  isScrolled?: boolean;
+  $isScrolled?: boolean;
 }
 
 const StyledHeader = styled.header<CommonStyledProps>`
@@ -101,9 +101,9 @@ const StyledHeader = styled.header<CommonStyledProps>`
 
   transition: all 0.2s ease;
 
-  ${({ overlay, isScrolled }) => {
-    if (!overlay) return null;
-    if (isScrolled) return null;
+  ${({ $overlay, $isScrolled }) => {
+    if (!$overlay) return null;
+    if ($isScrolled) return null;
     return `
           --header-text-color: white;
           color: var(--header-text-color);
@@ -113,8 +113,8 @@ const StyledHeader = styled.header<CommonStyledProps>`
         `;
   }}
 
-  ${({ isScrolled }) => {
-    if (!isScrolled) return null;
+  ${({ $isScrolled }) => {
+    if (!$isScrolled) return null;
 
     return `
       position: fixed;
@@ -141,16 +141,6 @@ const LogoArea = styled(Link)<CommonStyledProps>`
 
   color: white;
   background-color: var(--color-grey-900);
-
-  /* ${({ overlay, isScrolled }) => {
-    if (!overlay) return null;
-    if (isScrolled) return null;
-
-    return `
-      color: var(--color-grey-900);
-      background-color: var(--header-text-color);
-    `;
-  }} */
 `;
 
 const Nav = styled.div`
