@@ -1,13 +1,15 @@
 /**
  * External imports
  */
-import React from "react";
+import React, { useMemo } from "react";
 import { graphql, PageProps } from "gatsby";
 
 /**
  * Internal imports
  */
 import { Layout } from "../../components/base";
+import { PostList } from "../../components/post";
+import { PostListType } from "../../components/post/PostList";
 
 export default function BlogPost(
   props: PageProps<Queries.getPostsByCategoryQuery>
@@ -18,7 +20,20 @@ export default function BlogPost(
     },
   } = props;
 
-  return <Layout pageTitle="블로그">블로그입니다.</Layout>;
+  const computedPosts = useMemo(() => {
+    return edges.map((item) => {
+      return {
+        id: item.node.id,
+        frontmatter: item.node.frontmatter,
+      };
+    });
+  }, [edges]);
+
+  return (
+    <Layout pageTitle="블로그">
+      <PostList posts={computedPosts as PostListType} />
+    </Layout>
+  );
 }
 
 export const pageQuery = graphql`
