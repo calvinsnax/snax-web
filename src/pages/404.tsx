@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Box, Container } from "../components/atom";
+import { navigate } from "gatsby";
+
+import { Box, Button, Container } from "../components/atom";
 import { Layout } from "../components/base";
 
 const NotFoundPage = () => {
+  const handleClickHome = () => navigate("/");
+
   return (
     <Layout pageTitle="404" overlay>
       <Box
@@ -18,6 +22,7 @@ const NotFoundPage = () => {
       >
         <Container isArticle>
           <PointObject>404</PointObject>
+
           <Box
             position="relative"
             zIndex={1}
@@ -26,22 +31,24 @@ const NotFoundPage = () => {
             wordBreak="keep-all"
           >
             <Box as="h1" fontSize={8} fontWeight={800} mb="2rem">
-              404, 찾을 수 없는 <br />
-              페이지에 대한 고찰
+              페이지를 <br />
+              찾을 수 없어요
             </Box>
 
-            <Box as="p" mb={3}>
-              페이지를 찾을 수 없다.
+            <Box as="p" mb={4} lineHeight={1.5}>
+              주소가 잘못되었거나, 글쓴이가 부끄러워서 자삭한 것 같아요. <br />
+              대신 다른 글을 찾아볼래요?
             </Box>
 
-            <Box as="p" mb={3}>
-              왜 이 페이지는 없는 것일까. 곰곰히 생각해보면 당연하다. 없는
-              페이지를 찾으려고 했기 때문이다.
-            </Box>
+            <Button
+              color="primary"
+              size="large"
+              round
+              onClick={handleClickHome}
+            >
+              홈으로 가기
+            </Button>
           </Box>
-          {/* <Button color="primary" size="large" round>
-            더보기
-          </Button> */}
         </Container>
       </Box>
     </Layout>
