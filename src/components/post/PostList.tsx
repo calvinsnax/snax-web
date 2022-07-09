@@ -1,21 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
-import { PostItem } from "./PostItem";
-import { usePost } from "../../hooks/usePost";
+import { PostItem, PostItemProps } from "./PostItem";
 import { Box } from "../atom";
 
-export const PostList = () => {
-  const posts = usePost();
+export interface PostType {
+  id: string;
+  slug: string;
+  frontmatter: PostItemProps;
+}
+
+export type PostListType = PostType[];
+
+interface Props {
+  posts: PostListType;
+}
+
+export const PostList = (props: Props) => {
+  const { posts } = props;
 
   return (
     <Box overflow="hidden">
       <Ul>
         {posts.map((post) => (
-          <PostItem
-            key={post.node.id}
-            {...(post.node.frontmatter as Queries.MdxFrontmatter)}
-          />
+          <PostItem key={post.id} {...post.frontmatter} />
         ))}
       </Ul>
     </Box>

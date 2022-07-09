@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { rgba } from "polished";
 import { Link } from "gatsby";
 
 import { Box } from "../atom";
 
-type PostItemProps = Partial<Queries.MdxFrontmatter>;
+export type PostItemProps = Partial<Queries.MdxFrontmatter>;
 
 export const PostItem = (props: PostItemProps) => {
   const { slug, title, date, featuredImage, category, color } = props;
 
+  const postPath = useMemo(() => {
+    return `${category}${slug}`;
+  }, [category, slug]);
+
   return (
     <Li>
-      <ItemLink to={slug ? "/blog" + slug : "/404"} $backgroundColor={color}>
+      <ItemLink to={postPath} $backgroundColor={color}>
         {!!featuredImage?.publicURL && (
           <>
             <Thumbnail

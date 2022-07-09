@@ -1,4 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
+import { useMemo } from "react";
+
+interface Props {
+  category?: "스토리" | "디자인" | "개발";
+}
 
 export const usePost = () => {
   const { allMdx } = useStaticQuery<Queries.getPostsQuery>(graphql`
