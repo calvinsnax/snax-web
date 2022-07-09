@@ -70,7 +70,7 @@ export default function BlogPost(
                   p="0.5rem 1rem"
                   color={
                     mdx?.frontmatter?.categoryTextColor ||
-                    "var(--color-grey-600)"
+                    "var(--color-grey-900)"
                   }
                   fontSize={3}
                   fontWeight={700}

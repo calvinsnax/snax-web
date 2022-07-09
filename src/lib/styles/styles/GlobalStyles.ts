@@ -30,7 +30,7 @@ const StyledCss = css`
     --spacing-base: 1.5rem;
 
     --border-radius-basic: 0.875rem;
-    --border-radius-xlarge: 2rem;
+    --border-radius-xlarge: 3rem;
 
     --color-primary-50: ${mix(0.95, "#ffffff", colorBrand)};
     --color-primary-100: ${mix(0.9, "#ffffff", colorBrand)};

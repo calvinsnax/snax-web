@@ -23,15 +23,28 @@ export const PostItem = (props: PostItemProps) => {
     <Li>
       <ItemLink
         to={slug ? "/blog" + slug : "/404"}
-        backgroundColor={backgroundColor ?? ""}
+        $backgroundColor={backgroundColor}
       >
         {!!featuredImage?.publicURL && (
-          <Thumbnail src={featuredImage?.publicURL} alt={featuredImage?.name} />
+          <>
+            <Thumbnail
+              src={featuredImage?.publicURL}
+              alt={featuredImage?.name}
+            />
+            <Box
+              position="absolute"
+              top={0}
+              left={0}
+              width="100%"
+              height="100%"
+              background={rgba("black", 0.2)}
+            />
+          </>
         )}
 
         <Box
           position="absolute"
-          zIndex={1}
+          zIndex={2}
           left={0}
           bottom={0}
           display="flex"
@@ -40,14 +53,13 @@ export const PostItem = (props: PostItemProps) => {
           alignItems="center"
           width="100%"
           height="100%"
-          background={rgba("black", 0.2)}
           p="2rem"
         >
           <Box
             as="p"
             display="inline-flex"
             p="0.5rem 1rem"
-            color={categoryTextColor || "var(--color-grey-600)"}
+            color={categoryTextColor || "var(--color-grey-900)"}
             fontSize={3}
             fontWeight={700}
             mb={3}
@@ -67,7 +79,7 @@ export const PostItem = (props: PostItemProps) => {
           >
             {title}
           </Box>
-          <Box as="time" fontSize={2} opacity={0.5}>
+          <Box as="time" fontSize={2} fontWeight={400} opacity={0.5}>
             {date}
           </Box>
         </Box>
@@ -88,24 +100,24 @@ const Thumbnail = styled.img`
   object-position: center;
 `;
 
-const ItemLink = styled(Link)<{ backgroundColor?: string }>`
+const ItemLink = styled(Link)<{ $backgroundColor?: string | null }>`
   position: relative;
   display: flex;
   width: 100%;
   height: 0;
   padding-bottom: 56.25%;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: var(--border-radius-xlarge);
 
   color: white;
   font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
 
-  ${({ backgroundColor }) =>
-    !!backgroundColor &&
+  ${({ $backgroundColor }) =>
+    !!$backgroundColor &&
     `
-    background-color: ${backgroundColor};
+    background-color: ${$backgroundColor};
   `}
 
   &,
