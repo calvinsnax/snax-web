@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-export const useBlog = () => {
+export const usePost = () => {
   const { allMdx } = useStaticQuery<Queries.getPostsQuery>(graphql`
     query getPosts {
       allMdx(sort: { order: DESC, fields: frontmatter___date }) {
@@ -11,9 +11,7 @@ export const useBlog = () => {
               title
               slug
               category
-              categoryTextColor
-              categoryBackgroundColor
-              backgroundColor
+              color
               date(locale: "ko", formatString: "YYYY.MM.DD")
               featuredImage {
                 publicURL

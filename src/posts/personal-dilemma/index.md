@@ -4,8 +4,7 @@ category: "story"
 date: "2021-02-05"
 title: "하고 싶은 일과 해야하는 일의 사이"
 featuredImage: "./thumbnail.jpg"
-categoryTextColor: "white"
-categoryBackgroundColor: "#ac5a1e"
+color: "#ac5a1e"
 ---
 
 # 중고\_사회초년생

@@ -4,7 +4,7 @@ category: "design"
 date: "2022-01-03"
 title: "한 기업의 디자인 서사를 바꾸기까지, 무슨 일이 있었을까."
 featuredImage: "./thumbnail.png"
-categoryTextColor: "#1ca74b"
+color: "#1ca74b"
 ---
 
 다사다난했던 지난 날을 뒤로 하고 드디어 2022년 새해가 다가왔다.

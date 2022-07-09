@@ -96,7 +96,7 @@ const StyledCss = css`
     font-family: ${fontFamily};
     font-size: 16px;
     line-height: 1.2;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
 
   * {

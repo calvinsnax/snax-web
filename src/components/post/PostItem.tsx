@@ -8,23 +8,11 @@ import { Box } from "../atom";
 type PostItemProps = Partial<Queries.MdxFrontmatter>;
 
 export const PostItem = (props: PostItemProps) => {
-  const {
-    slug,
-    title,
-    date,
-    featuredImage,
-    category,
-    categoryBackgroundColor,
-    categoryTextColor,
-    backgroundColor,
-  } = props;
+  const { slug, title, date, featuredImage, category, color } = props;
 
   return (
     <Li>
-      <ItemLink
-        to={slug ? "/blog" + slug : "/404"}
-        $backgroundColor={backgroundColor}
-      >
+      <ItemLink to={slug ? "/blog" + slug : "/404"} $backgroundColor={color}>
         {!!featuredImage?.publicURL && (
           <>
             <Thumbnail
@@ -42,7 +30,7 @@ export const PostItem = (props: PostItemProps) => {
           </>
         )}
 
-        <Box
+        <TextArea
           position="absolute"
           zIndex={2}
           left={0}
@@ -58,31 +46,32 @@ export const PostItem = (props: PostItemProps) => {
           <Box
             as="p"
             display="inline-flex"
-            p="0.5rem 1rem"
-            color={categoryTextColor || "var(--color-grey-900)"}
-            fontSize={3}
+            p="0.375rem 0.75rem"
+            color={color || "var(--color-grey-900)"}
+            fontSize={2}
             fontWeight={700}
             mb={3}
-            background={categoryBackgroundColor || "white"}
+            background="white"
             borderRadius="2rem"
           >
             {category}
           </Box>
+
           <Box
             as="h4"
-            mb={4}
-            mx={6}
-            fontSize={6}
+            mb={3}
+            maxWidth="56%"
+            fontSize="2.25rem"
             fontWeight={700}
             wordBreak="keep-all"
             textAlign="center"
           >
             {title}
           </Box>
-          <Box as="time" fontSize={2} fontWeight={400} opacity={0.5}>
+          <Box as="time" fontSize={1} fontWeight={400} opacity={0.5}>
             {date}
           </Box>
-        </Box>
+        </TextArea>
       </ItemLink>
     </Li>
   );
@@ -100,6 +89,8 @@ const Thumbnail = styled.img`
   object-position: center;
 `;
 
+const TextArea = styled(Box)``;
+
 const ItemLink = styled(Link)<{ $backgroundColor?: string | null }>`
   position: relative;
   display: flex;
@@ -110,7 +101,7 @@ const ItemLink = styled(Link)<{ $backgroundColor?: string | null }>`
   border-radius: var(--border-radius-xlarge);
 
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
 
@@ -120,19 +111,23 @@ const ItemLink = styled(Link)<{ $backgroundColor?: string | null }>`
     background-color: ${$backgroundColor};
   `}
 
-  &,
-  & > ${Thumbnail}, & > *:not(${Thumbnail}) {
+  &, & > ${TextArea} {
     transition: 0.4s ease;
+  }
+
+  & > ${Thumbnail} {
+    transform: scale(1.05);
+    transition: 0.6s ease;
   }
 
   &:hover {
     transform: scale(0.98);
     & > ${Thumbnail} {
-      transform: scale(1.1);
+      transform: scale(1);
     }
 
     & > *:not(${Thumbnail}) {
-      opacity: 0.5;
+      transform: scale(1.05);
     }
   }
 `;

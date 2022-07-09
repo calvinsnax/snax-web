@@ -3,8 +3,9 @@ slug: "/post-test"
 category: "story"
 date: "2022-07-03"
 title: "새로운 라우팅 스트럭처"
-categoryTextColor: "#173dff"
-backgroundColor: "#173dff"
+categoryTextColor: "#1660ff"
+backgroundColor: "#1660ff"
+color: "#1660ff"
 ---
 
 # 라우터 설정

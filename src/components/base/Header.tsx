@@ -59,7 +59,7 @@ export const Header = (props: HeaderProps) => {
             height="100%"
           >
             <LogoArea $overlay={$overlay} $isScrolled={isScrolled} to="/">
-              Snax
+              snax
             </LogoArea>
 
             <Box display="flex" alignItems="center" height="100%">

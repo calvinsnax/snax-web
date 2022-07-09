@@ -19,4 +19,4 @@ export const colorGrey = {
   900: "#191F28",
 };
 
-export const fontFamily = `-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', Pretendard, Roboto, 'Noto Sans KR', 'Segoe UI', 'Malgun Gothic', sans-serif`;
+export const fontFamily = `'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', Pretendard, Roboto, 'Noto Sans KR', 'Segoe UI', 'Malgun Gothic', sans-serif`;
