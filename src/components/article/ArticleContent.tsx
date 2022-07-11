@@ -2,6 +2,7 @@ import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import styled, { css } from "styled-components";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+import { mobileBreakpoint } from "../../lib/styles";
 
 deckDeckGoHighlightElement();
 
@@ -24,6 +25,7 @@ export const ArticleContent = (props: ArticleContentProps) => {
     code: Code,
     hr: Hr,
     blockquote: Blockquote,
+    img: Img,
   };
 
   return (
@@ -37,7 +39,8 @@ const ContentArea = styled.div`
   padding-top: 4rem;
   padding-bottom: 4rem;
 
-  font-size: 1rem;
+  font-size: 1.125rem;
+  font-weight: 400;
   line-height: 1.75;
   word-break: keep-all;
 
@@ -49,6 +52,18 @@ const ContentArea = styled.div`
 
   deckgo-highlight-code {
     font-size: 1rem;
+  }
+
+  @media (max-width: ${mobileBreakpoint}) {
+    .gatsby-resp-image-wrapper {
+      margin-left: calc(var(--spacing-base) * -1) !important;
+      margin-right: calc(var(--spacing-base) * -1) !important;
+    }
+  }
+
+  .gatsby-resp-image-wrapper {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
 `;
 
@@ -88,11 +103,8 @@ const H6 = styled.h6`
 `;
 
 const Paragraph = styled.p`
-  margin-bottom: 2rem;
-
-  & > span.gatsby-resp-image-wrapper {
-    margin-bottom: -1rem;
-  }
+  margin-top: 1em;
+  margin-bottom: 1em;
 `;
 
 const Code = styled.code`
@@ -129,3 +141,5 @@ const Blockquote = styled.blockquote`
     margin: 0;
   }
 `;
+
+const Img = styled.img``;
