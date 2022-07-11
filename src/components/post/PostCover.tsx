@@ -1,8 +1,8 @@
 /**
  * External imports
  */
-import React from "react";
-import styled from "styled-components";
+import React, { useMemo } from "react";
+import styled, { css } from "styled-components";
 import { rgba } from "polished";
 
 /**
@@ -20,40 +20,49 @@ export const PostCover = (props: PostCoverProps) => {
     data: { mdx },
   } = props;
 
-  return (
-    <CoverArea backgroundColor={mdx?.frontmatter?.color ?? "black"}>
-      {!!mdx?.frontmatter?.featuredImage?.publicURL && (
-        <>
-          <img
-            src={mdx?.frontmatter?.featuredImage?.publicURL}
-            alt={mdx?.frontmatter?.featuredImage?.name}
-          />
-          <Box
-            position="absolute"
-            top={0}
-            left={0}
-            width="100%"
-            height="100px"
-            background={`linear-gradient(180deg, ${rgba(
-              colorGrey[900],
-              0.2
-            )}, transparent)`}
-          />
-        </>
-      )}
+  const renderThumbnail = useMemo(() => {
+    if (mdx?.frontmatter?.type === "blank") return null;
+    if (!mdx?.frontmatter?.featuredImage?.publicURL) return null;
+    return (
+      <Box position="absolute" top={0} left={0} width="100%" height="100%">
+        <ThumbnailImage
+          src={mdx?.frontmatter?.featuredImage?.publicURL}
+          alt={mdx?.frontmatter?.featuredImage?.name}
+        />
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          width="100%"
+          height="100%"
+          background={rgba("black", 0.2)}
+        />
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          width="100%"
+          height="100px"
+          background={`linear-gradient(180deg, ${rgba(
+            colorGrey[900],
+            0.2
+          )}, transparent)`}
+        />
+      </Box>
+    );
+  }, [
+    mdx?.frontmatter?.featuredImage?.publicURL,
+    mdx?.frontmatter?.featuredImage?.name,
+  ]);
 
-      <Box
-        position="absolute"
-        top={0}
-        left={0}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        width="100%"
-        height="100%"
-        color="white"
-        background={rgba("black", 0.2)}
-      >
+  return (
+    <CoverArea
+      $type={mdx?.frontmatter?.type as any}
+      backgroundColor={mdx?.frontmatter?.color ?? "black"}
+    >
+      {renderThumbnail}
+
+      <TextArea>
         <Container isArticle>
           <Box
             display="flex"
@@ -89,16 +98,63 @@ export const PostCover = (props: PostCoverProps) => {
             </Box>
           </Box>
         </Container>
-      </Box>
+      </TextArea>
     </CoverArea>
   );
 };
 
-const CoverArea = styled.div<{ backgroundColor?: string }>`
+interface commonStyleProps {
+  $type?: "blank" | null;
+  backgroundColor?: string;
+}
+
+const ThumbnailImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+`;
+
+const TextArea = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const blankTypeStyle = css`
+  height: auto;
+  margin-top: var(--header-safe-area);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  color: var(--color-grey-900);
+  background-color: var(--color-background);
+
+  h1 {
+    color: var(--color-grey-900);
+    font-size: 2.5rem;
+  }
+
+  ${TextArea} {
+    position: relative;
+  }
+`;
+
+const CoverArea = styled.div<commonStyleProps>`
   position: relative;
   width: 100vw;
   height: 80vh;
   overflow: hidden;
+
+  color: white;
 
   ${({ backgroundColor }) =>
     !!backgroundColor &&
@@ -106,13 +162,9 @@ const CoverArea = styled.div<{ backgroundColor?: string }>`
     background-color: ${backgroundColor};
   `}
 
-  & > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+  ${({ $type }) => {
+    if (!$type) return null;
+    if ($type === "blank") return blankTypeStyle;
+    return null;
+  }}
 `;

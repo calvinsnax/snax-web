@@ -42,6 +42,7 @@ export const pageQuery = graphql`
         title
         category
         color
+        type
         featuredImage {
           publicURL
           name

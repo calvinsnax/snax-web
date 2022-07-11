@@ -50,6 +50,7 @@ export const pageQuery = graphql`
             slug
             category
             color
+            type
             date(locale: "ko", formatString: "YYYY.MM.DD")
             featuredImage {
               publicURL

@@ -23,6 +23,7 @@ export const PostArticle = (props: PostArticleProps) => {
     ul: Ul,
     code: Code,
     hr: Hr,
+    blockquote: Blockquote,
   };
 
   return (
@@ -109,4 +110,20 @@ const Hr = styled.hr`
   margin-bottom: 2rem;
   border-top: none;
   border-bottom: 1px solid var(--color-grey-200);
+`;
+
+const Blockquote = styled.blockquote`
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding: 1rem;
+  color: var(--color-grey-700);
+  border-left: 2px solid var(--color-grey-400);
+  background-color: var(--color-grey-100);
+
+  & > ${Paragraph} {
+    margin: 0;
+  }
 `;
