@@ -45,8 +45,9 @@ const ContentArea = styled.div`
   word-break: keep-all;
 
   code {
-    padding: 0.25rem;
-    background-color: var(--color-grey-100);
+    padding: 0.125rem 0.25rem;
+    color: var(--color-primary-400);
+    background-color: var(--color-primary-100);
     border-radius: 4px;
   }
 
