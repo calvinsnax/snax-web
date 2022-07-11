@@ -1,6 +1,6 @@
 ---
-slug: "/post-test"
-category: "story"
+slug: "/new-router-structure"
+category: "memo"
 date: "2022-07-03"
 title: "새로운 라우팅 스트럭처"
 categoryTextColor: "#1660ff"
