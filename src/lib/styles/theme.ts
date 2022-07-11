@@ -20,3 +20,5 @@ export const colorGrey = {
 };
 
 export const fontFamily = `'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', Pretendard, Roboto, 'Noto Sans KR', 'Segoe UI', 'Malgun Gothic', sans-serif`;
+
+export const mobileBreakpoint = "764px";

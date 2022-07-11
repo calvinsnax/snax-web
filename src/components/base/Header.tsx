@@ -10,7 +10,7 @@ import { Link } from "gatsby";
  * Internal imports
  */
 import { Box, Container } from "../atom";
-import { headerDepth } from "../../lib/styles/styles";
+import { headerDepth } from "../../lib/styles";
 
 export const HeaderContext = createContext({
   isScrolled: false,

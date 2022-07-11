@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { PostItem, PostItemProps } from "./PostItem";
 import { Box } from "../atom";
+import { mobileBreakpoint } from "../../lib/styles";
 
 export interface PostType {
   id: string;
@@ -40,8 +41,10 @@ const Ul = styled.ul`
     flex-basis: 50%;
     max-width: 50%;
     padding: 0.25rem;
-    /* &:not(:last-child) {
-      margin-bottom: 0.375rem;
-    } */
+
+    @media (max-width: ${mobileBreakpoint}) {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
   }
 `;

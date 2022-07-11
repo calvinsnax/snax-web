@@ -16,6 +16,7 @@ import {
   headerHeight,
   headerSafeArea,
   articleWidth,
+  mobileBreakpoint,
 } from "./theme";
 
 const StyledCss = css`
@@ -31,6 +32,10 @@ const StyledCss = css`
 
     --border-radius-basic: 0.875rem;
     --border-radius-xlarge: 3rem;
+
+    @media (max-width: ${mobileBreakpoint}) {
+      --border-radius-xlarge: 1.25rem;
+    }
 
     --color-primary-50: ${mix(0.95, "#ffffff", colorBrand)};
     --color-primary-100: ${mix(0.9, "#ffffff", colorBrand)};
@@ -96,7 +101,6 @@ const StyledCss = css`
     font-family: ${fontFamily};
     font-size: 16px;
     line-height: 1.2;
-    /* overflow-x: hidden; */
   }
 
   * {

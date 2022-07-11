@@ -9,7 +9,7 @@ import styled from "styled-components";
 /**
  * Internal imports
  */
-import { GlobalStyles } from "../../lib/styles/styles";
+import { GlobalStyles } from "../../lib/styles";
 import { Header, HeaderProps } from "./Header";
 
 export interface LayoutProps extends HeaderProps {

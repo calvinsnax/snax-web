@@ -8,7 +8,7 @@ import { rgba } from "polished";
 /**
  * Internal imports
  */
-import { colorGrey } from "../../lib/styles/styles";
+import { colorGrey } from "../../lib/styles";
 import { Box, Container } from "../atom";
 
 interface ArticleHeadingProps {
