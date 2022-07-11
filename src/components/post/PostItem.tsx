@@ -64,8 +64,8 @@ export const PostItem = (props: PostItemProps) => {
           <Box
             as="h4"
             mb={3}
-            maxWidth="56%"
-            fontSize="2.25rem"
+            maxWidth={["100%", "56%"]}
+            fontSize={["1.75rem", "2.25rem"]}
             fontWeight={700}
             wordBreak="keep-all"
             textAlign="center"
