@@ -9,13 +9,13 @@ import { rgba } from "polished";
  * Internal imports
  */
 import { colorGrey } from "../../lib/styles/styles";
-import { Box, Container } from "../../components/atom";
+import { Box, Container } from "../atom";
 
-interface PostCoverProps {
+interface ArticleHeadingProps {
   data: Queries.getMdxPostByIdQueryQuery;
 }
 
-export const PostCover = (props: PostCoverProps) => {
+export const ArticleHeading = (props: ArticleHeadingProps) => {
   const {
     data: { mdx },
   } = props;

@@ -2,16 +2,13 @@
  * External imports
  */
 import React from "react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, PageProps } from "gatsby";
 
 /**
  * Internal imports
  */
 import { Layout } from "../../components/base";
-import { Container } from "../../components/atom";
-import { PostArticle } from "../../components/post";
-import { PostCover } from "../../components/post/PostCover";
+import { Article } from "../../components/article";
 
 export default function BlogPost(
   props: PageProps<Queries.getMdxPostByIdQueryQuery>
@@ -21,14 +18,7 @@ export default function BlogPost(
 
   return (
     <Layout pageTitle={mdx?.frontmatter?.title} $overlay>
-      <article>
-        <PostCover data={data} />
-        <Container isArticle>
-          <PostArticle>
-            <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
-          </PostArticle>
-        </Container>
-      </article>
+      <Article data={data} />
     </Layout>
   );
 }

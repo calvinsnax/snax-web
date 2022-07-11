@@ -5,11 +5,11 @@ import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/
 
 deckDeckGoHighlightElement();
 
-interface PostArticleProps {
+interface ArticleContentProps {
   children: React.ReactNode;
 }
 
-export const PostArticle = (props: PostArticleProps) => {
+export const ArticleContent = (props: ArticleContentProps) => {
   const { children } = props;
 
   const components = {
@@ -54,7 +54,9 @@ const ContentArea = styled.div`
 
 const commonHeadingStyle = css`
   font-weight: 700;
-  margin-bottom: 0.5em;
+  line-height: 1.4;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
 `;
 
 const H1 = styled.h1`
