@@ -17,7 +17,10 @@ export default function BlogPost(
   const { mdx } = data;
 
   return (
-    <Layout pageTitle={mdx?.frontmatter?.title} $overlay>
+    <Layout
+      pageTitle={mdx?.frontmatter?.title}
+      $overlay={mdx?.frontmatter?.type !== "blank"}
+    >
       <Article data={data} />
     </Layout>
   );

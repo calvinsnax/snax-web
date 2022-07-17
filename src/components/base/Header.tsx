@@ -9,7 +9,7 @@ import { Link } from "gatsby";
 /**
  * Internal imports
  */
-import { Box, Container } from "../atom";
+import { Box, Container, Logo } from "../atom";
 import { headerDepth } from "../../lib/styles";
 
 export const HeaderContext = createContext({
@@ -59,7 +59,7 @@ export const Header = (props: HeaderProps) => {
             height="100%"
           >
             <LogoArea $overlay={$overlay} $isScrolled={isScrolled} to="/">
-              snax
+              <Logo />
             </LogoArea>
 
             <Box display="flex" alignItems="center" height="100%">
@@ -96,7 +96,7 @@ const StyledHeader = styled.header<CommonStyledProps>`
   width: 100%;
   height: var(--header-safe-area);
 
-  background-color: ${rgba("white", 0.9)};
+  background-color: ${rgba("white", 0.8)};
   backdrop-filter: blur(18px);
 
   transition: all 0.2s ease;
@@ -129,18 +129,15 @@ const StyledHeader = styled.header<CommonStyledProps>`
 const LogoArea = styled(Link)<CommonStyledProps>`
   display: flex;
   align-items: center;
-  padding: 0.375rem 1rem;
   margin-right: 3rem;
 
+  color: var(--color-gray-900);
   text-decoration: none;
-  border-radius: 3rem;
 
-  font-size: 1.25rem;
-  font-weight: 800;
-  font-style: italic;
-
-  color: white;
-  background-color: var(--color-grey-900);
+  & > svg {
+    width: auto;
+    height: 1.25rem;
+  }
 `;
 
 const Nav = styled.div`

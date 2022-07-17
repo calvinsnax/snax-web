@@ -8,15 +8,15 @@ export const HomeHead = () => {
     <Box px="0.5rem">
       <Box
         position="relative"
+        mt="calc(var(--header-safe-area) * -1)"
         display="flex"
         alignItems="center"
-        backgroundColor="black"
+        // backgroundColor="var(--color-grey-100)"
         pt={7}
         pb={5}
         overflow="hidden"
-        borderBottomRightRadius="var(--border-radius-xlarge)"
-        borderBottomLeftRadius="var(--border-radius-xlarge)"
-        // background="linear-gradient(black, #0c1a46)"
+        // borderBottomRightRadius="var(--border-radius-xlarge)"
+        // borderBottomLeftRadius="var(--border-radius-xlarge)"
       >
         <Container>
           <MainText>
@@ -35,7 +35,7 @@ export const HomeHead = () => {
 const MainText = styled.h1`
   position: relative;
   z-index: 1;
-  color: white;
+  /* color: white; */
   font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.2;

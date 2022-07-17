@@ -5,7 +5,17 @@ import { Link } from "gatsby";
 
 import { Box } from "../atom";
 
-export type PostItemProps = Partial<Queries.MdxFrontmatter>;
+export interface PostItemProps {
+  slug?: string;
+  title?: string;
+  date?: string;
+  featuredImage?: {
+    publicURL: string;
+    name: string;
+  };
+  category?: string;
+  color?: string;
+}
 
 export const PostItem = (props: PostItemProps) => {
   const { slug, title, date, featuredImage, category, color } = props;

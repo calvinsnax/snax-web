@@ -19,7 +19,7 @@ const IndexPage = () => {
   }, [post]);
 
   return (
-    <Layout $overlay background="black">
+    <Layout>
       <HomeHead />
       <PostList posts={computedPosts as PostListType} />
     </Layout>

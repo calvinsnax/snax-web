@@ -37,9 +37,9 @@ export default function BlogPost(
 }
 
 export const pageQuery = graphql`
-  query getPostsByCategory($category: String) {
+  query getPostsByCategory($frontmatter__category: String) {
     allMdx(
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: { frontmatter: { category: { eq: $frontmatter__category } } }
       sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {
