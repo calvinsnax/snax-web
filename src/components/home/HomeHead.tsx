@@ -20,8 +20,15 @@ export const HomeHead = () => {
       >
         <Container>
           <MainText>
-            UI/UX 디자이너이자 Front-End 개발자, <br />
-            SNAX의 블로그입니다.
+            <Box color="var(--color-grey-500)">
+              DESIGNER, <br />
+              DEVELOPLER를 넘어,
+            </Box>
+            {/* <br /> */}
+            CREATOR를 넘보다
+            <Box as="span" color="var(--color-primary-400)">
+              .
+            </Box>
           </MainText>
           <Button color="primary" size="large">
             더보기
@@ -36,8 +43,8 @@ const MainText = styled.h1`
   position: relative;
   z-index: 1;
   /* color: white; */
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2.75rem;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 2.5rem;
 `;
