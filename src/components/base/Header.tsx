@@ -63,7 +63,7 @@ export const Header = (props: HeaderProps) => {
             </LogoArea>
 
             <Box display="flex" alignItems="center" height="100%">
-              <Nav>
+              {/* <Nav>
                 <ul>
                   <li>
                     <Link to="/cow-and-dog">소개</Link>
@@ -72,7 +72,7 @@ export const Header = (props: HeaderProps) => {
                     <Link to="/blog">블로그</Link>
                   </li>
                 </ul>
-              </Nav>
+              </Nav> */}
             </Box>
           </Box>
         </Container>
