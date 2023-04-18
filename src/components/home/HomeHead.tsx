@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Box, Button, Container } from "../atom";
 import { AiFillGithub } from "react-icons/ai";
+import { mobileBreakpoint } from "../../lib/styles";
 
 export const HomeHead = () => {
   return (
@@ -13,8 +14,8 @@ export const HomeHead = () => {
         display="flex"
         alignItems="center"
         // backgroundColor="var(--color-grey-100)"
-        pt="10rem"
-        pb={5}
+        pt={["7rem", "10rem"]}
+        pb={["1rem", "4rem"]}
         overflow="hidden"
         // borderBottomRightRadius="var(--border-radius-xlarge)"
         // borderBottomLeftRadius="var(--border-radius-xlarge)"
@@ -59,4 +60,9 @@ const MainText = styled.h1`
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 2.5rem;
+
+  @media (max-width: ${mobileBreakpoint}) {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
 `;
