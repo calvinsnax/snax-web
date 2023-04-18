@@ -8,7 +8,7 @@ import { rgba } from "polished";
 /**
  * Internal imports
  */
-import { colorGrey } from "../../lib/styles";
+import { colorGrey, mobileBreakpoint } from "../../lib/styles";
 import { Box, Container } from "../atom";
 
 interface ArticleHeadingProps {
@@ -63,7 +63,12 @@ export const ArticleHeading = (props: ArticleHeadingProps) => {
       {renderThumbnail}
 
       <TextArea>
-        <Container isArticle>
+        <Container
+          isArticle
+          style={{
+            maxWidth: "640px",
+          }}
+        >
           <Box
             display="flex"
             flexDirection="column"
@@ -84,15 +89,7 @@ export const ArticleHeading = (props: ArticleHeadingProps) => {
             >
               {mdx?.frontmatter?.category}
             </Box>
-            <Box
-              as="h1"
-              fontSize={6}
-              fontWeight={700}
-              mb={4}
-              wordBreak="keep-all"
-            >
-              {mdx?.frontmatter?.title}
-            </Box>
+            <Heading>{mdx?.frontmatter?.title}</Heading>
             <Box as="time" opacity={0.5}>
               {mdx?.frontmatter?.date}
             </Box>
@@ -124,9 +121,25 @@ const TextArea = styled.div`
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
   height: 100%;
+  padding-bottom: 4rem;
+
+  @media (max-width: ${mobileBreakpoint}) {
+    padding-bottom: 2rem;
+  }
+`;
+
+const Heading = styled.h1`
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  word-break: keep-all;
+
+  @media (max-width: ${mobileBreakpoint}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const blankTypeStyle = css`
@@ -153,8 +166,12 @@ const CoverArea = styled.div<commonStyleProps>`
   width: 100%;
   height: 80vh;
   overflow: hidden;
-
   color: white;
+
+  @media (max-width: ${mobileBreakpoint}) {
+    padding-top: 3rem;
+    height: 300px;
+  }
 
   ${({ backgroundColor }) =>
     !!backgroundColor &&

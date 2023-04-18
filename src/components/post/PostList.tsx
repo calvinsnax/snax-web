@@ -21,32 +21,21 @@ export const PostList = (props: Props) => {
   const { posts } = props;
 
   return (
-    <Box overflow="hidden">
-      <Container>
-        <Ul>
-          {posts.map((post) => (
-            <PostItem key={post.id} {...post.frontmatter} />
-          ))}
-        </Ul>
-      </Container>
-    </Box>
+    <Container>
+      <Ul>
+        {posts.map((post) => (
+          <PostItem key={post.id} {...post.frontmatter} />
+        ))}
+      </Ul>
+    </Container>
   );
 };
 
 const Ul = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 0 2rem;
-  margin: -0.5rem;
-
+  padding: 3rem 0;
   & > li {
-    flex-basis: 50%;
-    max-width: 50%;
-    padding: 0.5rem;
-
-    @media (max-width: ${mobileBreakpoint}) {
-      flex-basis: 100%;
-      max-width: 100%;
+    &:not(:last-of-type) {
+      margin-bottom: 3rem;
     }
   }
 `;

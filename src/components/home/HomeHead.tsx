@@ -2,17 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 import { Box, Button, Container } from "../atom";
+import { AiFillGithub } from "react-icons/ai";
 
 export const HomeHead = () => {
   return (
-    <Box px="0.5rem">
+    <Box>
       <Box
         position="relative"
         mt="calc(var(--header-safe-area) * -1)"
         display="flex"
         alignItems="center"
         // backgroundColor="var(--color-grey-100)"
-        pt={7}
+        pt="10rem"
         pb={5}
         overflow="hidden"
         // borderBottomRightRadius="var(--border-radius-xlarge)"
@@ -30,8 +31,19 @@ export const HomeHead = () => {
               .
             </Box>
           </MainText>
-          <Button color="primary" size="large">
-            더보기
+          <Button
+            as="a"
+            href="https://github.com/calvinsnax"
+            target="_blank"
+            color="black"
+            size="large"
+          >
+            <AiFillGithub
+              style={{
+                marginRight: "0.5rem",
+              }}
+            />
+            <span>Github</span>
           </Button>
         </Container>
       </Box>

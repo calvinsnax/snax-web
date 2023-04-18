@@ -3,8 +3,8 @@ export const articleWidth = 780;
 
 export const colorBrand = "#2562FF";
 
-export const headerHeight = 72;
-export const headerSafeArea = 88;
+export const headerHeight = 58;
+export const headerSafeArea = 58;
 
 export const colorGrey = {
   50: "#F9FAFB",

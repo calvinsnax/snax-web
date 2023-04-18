@@ -39,7 +39,8 @@ const ContentArea = styled.div`
   padding-top: 4rem;
   padding-bottom: 4rem;
 
-  font-size: 1.125rem;
+  color: var(--color-grey-700);
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
   word-break: keep-all;
@@ -55,20 +56,22 @@ const ContentArea = styled.div`
     font-size: 1rem;
   }
 
-  @media (max-width: ${mobileBreakpoint}) {
-    .gatsby-resp-image-wrapper {
-      margin-left: calc(var(--spacing-base) * -1) !important;
-      margin-right: calc(var(--spacing-base) * -1) !important;
-    }
-  }
-
   .gatsby-resp-image-wrapper {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    @media (max-width: ${mobileBreakpoint}) {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 `;
 
 const commonHeadingStyle = css`
+  color: var(--color-grey-900);
   font-weight: 700;
   line-height: 1.4;
   margin-top: 2em;
@@ -135,8 +138,19 @@ const Blockquote = styled.blockquote`
   margin-inline-end: 0;
   padding: 1rem;
   color: var(--color-grey-700);
-  border-left: 2px solid var(--color-grey-400);
   background-color: var(--color-grey-100);
+  border-radius: 0.75rem;
+  overflow: hidden;
+
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-left: 4px solid var(--color-grey-400);
+  }
 
   & > ${Paragraph} {
     margin: 0;

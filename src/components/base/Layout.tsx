@@ -11,6 +11,7 @@ import styled from "styled-components";
  */
 import { GlobalStyles } from "../../lib/styles";
 import { Header, HeaderProps } from "./Header";
+import { Footer } from "./Footer";
 
 export interface LayoutProps extends HeaderProps {
   pageTitle?: string;
@@ -50,6 +51,7 @@ export const Layout = (props: LayoutProps) => {
       <Header $overlay={$overlay} />
 
       <Main background={background}>{children}</Main>
+      <Footer />
     </LayoutWrap>
   );
 };

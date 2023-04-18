@@ -4,6 +4,7 @@ import { rgba } from "polished";
 import { Link } from "gatsby";
 
 import { Box } from "../atom";
+import { mobileBreakpoint } from "../../lib/styles";
 
 export interface PostItemProps {
   slug?: string;
@@ -27,59 +28,81 @@ export const PostItem = (props: PostItemProps) => {
   return (
     <Li>
       <ItemLink to={postPath}>
-        {!!featuredImage?.publicURL && (
-          <ThumbnailArea>
-            <Thumbnail
-              src={featuredImage?.publicURL}
-              alt={featuredImage?.name}
-            />
-          </ThumbnailArea>
-        )}
+        <Article>
+          {!!featuredImage?.publicURL && (
+            <ThumbnailArea>
+              <Thumbnail
+                src={featuredImage?.publicURL}
+                alt={featuredImage?.name}
+              />
+            </ThumbnailArea>
+          )}
 
-        <TextArea
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="flex-start"
-          width="100%"
-          height="100%"
-          p="2rem"
-        >
-          <Box
-            as="p"
-            display="inline-flex"
-            p="0.375rem 0.75rem"
-            color={color || "var(--color-grey-900)"}
-            fontSize={1}
-            fontWeight={700}
-            mb={3}
-            background="white"
-            border="1px solid var(--color-grey-200)"
-            borderRadius="2rem"
+          <TextArea
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="flex-start"
+            width="100%"
+            height="100%"
           >
-            {category}
-          </Box>
+            <Box
+              as="h4"
+              color={"var(--color-grey-600)"}
+              fontSize={["0.75rem", "0.875rem"]}
+              fontWeight={700}
+              mb={3}
+              style={{
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+              }}
+            >
+              {category}
+            </Box>
 
-          <Box
-            as="h4"
-            mb={3}
-            fontSize={["1.25rem", "1.5rem"]}
-            fontWeight={700}
-            wordBreak="keep-all"
-          >
-            {title}
-          </Box>
-          <Box as="time" fontSize={1} fontWeight={400} opacity={0.5}>
-            {date}
-          </Box>
-        </TextArea>
+            <Box
+              as="h3"
+              mb={3}
+              maxWidth="500px"
+              fontSize={["1.5rem", "2rem"]}
+              fontWeight={700}
+              lineHeight={1.4}
+              wordBreak="keep-all"
+            >
+              {title}
+            </Box>
+            <Box as="time" fontSize={1} fontWeight={400} opacity={0.5}>
+              {date}
+            </Box>
+          </TextArea>
+        </Article>
       </ItemLink>
     </Li>
   );
 };
 
 const Li = styled.li``;
+const Article = styled.article`
+  display: flex;
+  align-items: center;
+  @media (max-width: ${mobileBreakpoint}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
 
+const ThumbnailArea = styled.div`
+  position: relative;
+  flex: 0 0 auto;
+  width: 220px;
+  height: 220px;
+
+  @media (max-width: ${mobileBreakpoint}) {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+`;
 const Thumbnail = styled.img`
   position: absolute;
   top: 0;
@@ -88,27 +111,28 @@ const Thumbnail = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 0.75rem;
 `;
 
-const TextArea = styled(Box)``;
+const TextArea = styled(Box)`
+  flex: 1;
+  padding: 2rem;
+
+  @media (max-width: ${mobileBreakpoint}) {
+    padding: 1.25rem 0 1.25rem 2px;
+  }
+`;
 
 const ItemLink = styled(Link)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--color-float-background);
-  border-radius: var(--border-radius-basic);
-  box-shadow: 0 0.5rem 1rem var(--color-opacity-200);
-
   color: var(--color-grey-900);
   font-size: 1.25rem;
   font-weight: 700;
   text-decoration: none;
   overflow: hidden;
-`;
 
-const ThumbnailArea = styled.div`
-  position: relative;
-  padding-bottom: 56.25%;
+  transition: color 250ms ease;
+
+  &:hover {
+    color: var(--color-primary-400);
+  }
 `;

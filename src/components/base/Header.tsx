@@ -3,14 +3,14 @@
  */
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
-import { rgba } from "polished";
 import { Link } from "gatsby";
+import { AiFillGithub } from "react-icons/ai";
 
 /**
  * Internal imports
  */
 import { Box, Container, Logo } from "../atom";
-import { headerDepth } from "../../lib/styles";
+import { headerDepth, mobileBreakpoint } from "../../lib/styles";
 
 export const HeaderContext = createContext({
   isScrolled: false,
@@ -51,7 +51,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <HeaderContext.Provider value={memorizedContextValue}>
       <StyledHeader $overlay={$overlay} $isScrolled={isScrolled}>
-        <Container expand>
+        <Container>
           <Box
             display="flex"
             alignItems="center"
@@ -63,16 +63,18 @@ export const Header = (props: HeaderProps) => {
             </LogoArea>
 
             <Box display="flex" alignItems="center" height="100%">
-              {/* <Nav>
+              <Nav>
                 <ul>
-                  <li>
+                  {/* <li>
                     <Link to="/cow-and-dog">소개</Link>
-                  </li>
+                  </li> */}
                   <li>
-                    <Link to="/blog">블로그</Link>
+                    <a href="https://github.com/calvinsnax" target="_blank">
+                      <AiFillGithub fontSize="1.25rem" />
+                    </a>
                   </li>
                 </ul>
-              </Nav> */}
+              </Nav>
             </Box>
           </Box>
         </Container>
@@ -96,8 +98,11 @@ const StyledHeader = styled.header<CommonStyledProps>`
   width: 100%;
   height: var(--header-safe-area);
 
-  background-color: ${rgba("white", 0.8)};
+  background-color: rgba(255 255 255 / 90%);
   backdrop-filter: blur(18px);
+  /* box-shadow: var(--color-opacity-200) 0 1px; */
+
+  --header-text-color: var(--color-grey-600);
 
   transition: all 0.2s ease;
 
@@ -121,7 +126,7 @@ const StyledHeader = styled.header<CommonStyledProps>`
       top: 0;
       left: 0;
       height: var(--header-height);
-      box-shadow: var(--color-opacity-100) 0 1px;
+      box-shadow: var(--color-opacity-200) 0 1px;
     `;
   }}
 `;
@@ -131,12 +136,16 @@ const LogoArea = styled(Link)<CommonStyledProps>`
   align-items: center;
   margin-right: 3rem;
 
-  color: var(--color-gray-900);
+  color: var(--color-gray-800);
   text-decoration: none;
 
   & > svg {
     width: auto;
-    height: 1.25rem;
+    height: 1.125rem;
+
+    @media (max-width: ${mobileBreakpoint}) {
+      height: 1rem;
+    }
   }
 `;
 
