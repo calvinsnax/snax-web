@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `SNAX`,
-    siteUrl: `https://calvinsnax.github.io/`,
+    siteUrl: `https://calvinsnax.com/`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -14,6 +14,14 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-styled-components",
       options: {
         displayName: false,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://calvinsnax.com",
+        sitemap: "https://calvinsnax.com/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
     "gatsby-plugin-image",
