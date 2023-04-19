@@ -8,7 +8,7 @@ import { rgba } from "polished";
 /**
  * Internal imports
  */
-import { colorGrey, mobileBreakpoint, mobileStyle } from "../../lib/styles";
+import { colorGrey, mobileBreakpoint } from "../../lib/styles";
 import { Box, Container } from "../atom";
 
 interface ArticleHeadingProps {
@@ -170,12 +170,6 @@ const CoverArea = styled.section<commonStyleProps>`
     padding-top: 3rem;
     height: 300px;
   }
-
-  ${mobileStyle`
-    & {
-      height: 100px !important;
-    }
-  `}
 
   ${({ backgroundColor }) =>
     !!backgroundColor &&
