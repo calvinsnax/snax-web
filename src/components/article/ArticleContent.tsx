@@ -45,6 +45,11 @@ const ContentArea = styled.div`
   line-height: 1.75;
   word-break: keep-all;
 
+  @media (max-width: ${mobileBreakpoint}) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   code {
     padding: 0.125rem 0.25rem;
     color: var(--color-primary-400);

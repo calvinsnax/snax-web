@@ -14,11 +14,13 @@ export const Article = (props: Props) => {
   return (
     <article>
       <ArticleHeading data={data} />
-      <Container isArticle>
-        <ArticleContent>
-          <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
-        </ArticleContent>
-      </Container>
+      <section>
+        <Container isArticle>
+          <ArticleContent>
+            <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
+          </ArticleContent>
+        </Container>
+      </section>
     </article>
   );
 };

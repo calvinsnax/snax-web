@@ -8,7 +8,7 @@ import { rgba } from "polished";
 /**
  * Internal imports
  */
-import { colorGrey, mobileBreakpoint } from "../../lib/styles";
+import { colorGrey, mobileBreakpoint, mobileStyle } from "../../lib/styles";
 import { Box, Container } from "../atom";
 
 interface ArticleHeadingProps {
@@ -76,19 +76,7 @@ export const ArticleHeading = (props: ArticleHeadingProps) => {
             alignItems="center"
             textAlign="center"
           >
-            <Box
-              as="p"
-              display="inline-flex"
-              p="0.5rem 1rem"
-              color={mdx?.frontmatter?.color || "var(--color-grey-900)"}
-              fontSize={3}
-              fontWeight={700}
-              mb={3}
-              background="white"
-              borderRadius="2rem"
-            >
-              {mdx?.frontmatter?.category}
-            </Box>
+            <Category>{mdx?.frontmatter?.category}</Category>
             <Heading>{mdx?.frontmatter?.title}</Heading>
             <Box as="time" opacity={0.5}>
               {mdx?.frontmatter?.date}
@@ -131,6 +119,15 @@ const TextArea = styled.div`
   }
 `;
 
+const Category = styled.h3`
+  color: rgba(255 255 255 / 80%);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+`;
+
 const Heading = styled.h1`
   font-size: 2.5rem;
   font-weight: 700;
@@ -161,10 +158,11 @@ const blankTypeStyle = css`
   }
 `;
 
-const CoverArea = styled.div<commonStyleProps>`
+const CoverArea = styled.section<commonStyleProps>`
   position: relative;
   width: 100%;
   height: 80vh;
+  max-height: 550px;
   overflow: hidden;
   color: white;
 
@@ -172,6 +170,12 @@ const CoverArea = styled.div<commonStyleProps>`
     padding-top: 3rem;
     height: 300px;
   }
+
+  ${mobileStyle`
+    & {
+      height: 100px !important;
+    }
+  `}
 
   ${({ backgroundColor }) =>
     !!backgroundColor &&
