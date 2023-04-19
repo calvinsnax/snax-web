@@ -20,7 +20,7 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://calvinsnax.com",
-        sitemap: "https://calvinsnax.com/sitemap.xml",
+        sitemap: "https://calvinsnax.com/sitemap/sitemap-index.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
