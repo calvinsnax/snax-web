@@ -3,11 +3,10 @@ import styled from "styled-components";
 
 import { PostItem, PostItemProps } from "./PostItem";
 import { Box, Container } from "../atom";
-import { mobileBreakpoint } from "../../lib/styles";
 
 export interface PostType {
   id: string;
-  slug: string;
+  slug?: string;
   frontmatter: PostItemProps;
 }
 

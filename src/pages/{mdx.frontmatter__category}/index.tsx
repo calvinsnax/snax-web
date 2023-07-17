@@ -10,6 +10,7 @@ import { graphql, PageProps } from "gatsby";
 import { Layout } from "../../components/base";
 import { PostList } from "../../components/post";
 import { PostListType } from "../../components/post/PostList";
+import { Seo } from "../../components/atom";
 
 export default function BlogPost(
   props: PageProps<Queries.getPostsByCategoryQuery>
@@ -24,15 +25,19 @@ export default function BlogPost(
     return edges.map((item) => {
       return {
         id: item.node.id,
-        frontmatter: item.node.frontmatter,
+        frontmatter: {
+          ...item.node.frontmatter,
+        },
       };
     });
   }, [edges]);
 
   return (
-    <Layout pageTitle="블로그">
-      <PostList posts={computedPosts as PostListType} />
-    </Layout>
+    <Seo>
+      <Layout>
+        <PostList posts={computedPosts as PostListType} />
+      </Layout>
+    </Seo>
   );
 }
 

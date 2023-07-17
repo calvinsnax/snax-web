@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { navigate } from "gatsby";
+import { PageProps, navigate } from "gatsby";
 
 import { Box, Button, Container, Seo } from "../components/atom";
 import { Layout } from "../components/base";
 
-const NotFoundPage = () => {
+const NotFoundPage = (props: PageProps) => {
+  const { location } = props;
   const handleClickHome = () => navigate("/");
 
   return (
-    <Seo title="페이지를 찾을 수 없어요">
+    <Seo title="페이지를 찾을 수 없어요" pathname={location.pathname}>
       <Layout $overlay>
         <Box
           position="relative"

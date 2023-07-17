@@ -14,7 +14,7 @@ import { Seo } from "../../components/atom";
 export default function BlogPost(
   props: PageProps<Queries.getMdxPostByIdQueryQuery>
 ) {
-  const { data } = props;
+  const { data, location } = props;
   const { mdx } = data;
 
   return (
@@ -22,6 +22,7 @@ export default function BlogPost(
       title={mdx?.frontmatter?.title}
       image={mdx?.frontmatter?.featuredImage?.publicURL}
       description={mdx?.frontmatter?.description}
+      pathname={location.pathname}
     >
       <Layout $overlay={mdx?.frontmatter?.type !== "blank"}>
         <Article data={data} />

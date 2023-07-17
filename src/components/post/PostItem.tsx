@@ -10,6 +10,7 @@ export interface PostItemProps {
   slug?: string;
   title?: string;
   date?: string;
+  description?: string;
   featuredImage?: {
     publicURL: string;
     name: string;
