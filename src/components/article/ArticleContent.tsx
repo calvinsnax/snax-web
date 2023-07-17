@@ -1,10 +1,9 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import styled, { css } from "styled-components";
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-import { mobileBreakpoint } from "../../lib/styles";
+import { Helmet } from "react-helmet";
 
-deckDeckGoHighlightElement();
+import { mobileBreakpoint } from "../../lib/styles";
 
 interface ArticleContentProps {
   children: React.ReactNode;
@@ -23,7 +22,7 @@ export const ArticleContent = (props: ArticleContentProps) => {
     p: Paragraph,
     ul: Ul,
     ol: Ol,
-    code: Code,
+    // code: CodeBlock,
     hr: Hr,
     blockquote: Blockquote,
     img: Img,
@@ -33,6 +32,12 @@ export const ArticleContent = (props: ArticleContentProps) => {
 
   return (
     <ContentArea>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/katorlys/prism-theme-github/themes/prism-theme-github-light.css"
+        />
+      </Helmet>
       <MDXProvider components={components}>{children}</MDXProvider>
     </ContentArea>
   );
@@ -42,11 +47,10 @@ const ContentArea = styled.div`
   padding-top: 4rem;
   padding-bottom: 4rem;
 
-  color: var(--color-grey-700);
+  color: var(--color-grey-800);
   font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
-  word-break: keep-all;
 
   @media (max-width: ${mobileBreakpoint}) {
     padding-top: 1rem;
@@ -60,8 +64,13 @@ const ContentArea = styled.div`
     border-radius: 4px;
   }
 
-  deckgo-highlight-code {
-    font-size: 1rem;
+  .gatsby-highlight {
+    pre {
+      border-radius: 0.75rem;
+    }
+    code {
+      background-color: inherit;
+    }
   }
 
   .gatsby-resp-image-wrapper {
@@ -117,12 +126,6 @@ const H6 = styled.h6`
 const Paragraph = styled.p`
   margin-top: 1em;
   margin-bottom: 1em;
-`;
-
-const Code = styled.code`
-  padding: 0.25rem;
-  background-color: var(--color-grey-100);
-  border-radius: 4px;
 `;
 
 const Ul = styled.ul`

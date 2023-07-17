@@ -16,9 +16,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@deckdeckgo/highlight-code": "^4.3.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "add": "^2.0.6",
     "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.16.0",
     "gatsby-plugin-image": "^2.16.1",
@@ -30,12 +30,13 @@
     "gatsby-plugin-sharp": "^4.16.1",
     "gatsby-plugin-sitemap": "^5.16.0",
     "gatsby-plugin-styled-components": "^5.16.0",
-    "gatsby-remark-highlight-code": "^3.2.0",
     "gatsby-remark-images": "^6.16.0",
+    "gatsby-remark-prismjs": "^7.11.0",
     "gatsby-source-filesystem": "^4.16.0",
     "gatsby-transformer-remark": "^5.17.0",
     "gatsby-transformer-sharp": "^4.16.0",
     "polished": "^4.2.2",
+    "prismjs": "^1.29.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-head": "^3.4.0",
@@ -43,7 +44,8 @@
     "react-icons": "^4.4.0",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.1",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/gatsby-transformer-remark": "^2.9.1",
