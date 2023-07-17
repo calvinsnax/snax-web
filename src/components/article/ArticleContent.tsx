@@ -22,10 +22,13 @@ export const ArticleContent = (props: ArticleContentProps) => {
     h6: H6,
     p: Paragraph,
     ul: Ul,
+    ol: Ol,
     code: Code,
     hr: Hr,
     blockquote: Blockquote,
     img: Img,
+    a: Anchor,
+    strong: Strong,
   };
 
   return (
@@ -128,6 +131,12 @@ const Ul = styled.ul`
   margin-bottom: 2rem;
 `;
 
+const Ol = styled.ol`
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+`;
+
 const Hr = styled.hr`
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -163,3 +172,22 @@ const Blockquote = styled.blockquote`
 `;
 
 const Img = styled.img``;
+
+const Anchor = styled.a`
+  color: var(--color-grey-600);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-grey-400);
+  &:not(.gatsby-resp-image-link) {
+    white-space: pre-wrap;
+  }
+
+  transition: 250ms ease;
+  &:hover {
+    color: var(--color-primary-300);
+    border-color: var(--color-primary-200);
+  }
+`;
+
+const Strong = styled.strong`
+  font-weight: 600;
+`;
