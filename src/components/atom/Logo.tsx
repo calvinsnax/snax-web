@@ -10,8 +10,8 @@ export const Logo = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M122.179 0.639998H130.402L138.892 11.716L147.418 0.639998H155.597L142.999 17.06L155.597 33.48H147.418L138.892 22.404L130.402 33.48H122.179L134.777 17.06L122.179 0.639998Z"
         fill="currentColor"
       />
