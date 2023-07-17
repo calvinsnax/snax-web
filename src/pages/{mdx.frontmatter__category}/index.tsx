@@ -52,6 +52,7 @@ export const pageQuery = graphql`
             color
             type
             date(locale: "ko", formatString: "YYYY.MM.DD")
+            description
             featuredImage {
               publicURL
               name

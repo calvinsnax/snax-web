@@ -3,6 +3,7 @@ slug: "/ci-cd-for-semantic-versioning"
 category: "develop"
 date: "2023-07-17"
 title: "사내 라이브러리를 위한 버전관리 및 배포 자동화 CI/CD"
+description: "오픈소스 또는 사내 라이브러리의 버전관리와 릴리즈 방법, 그리고 CI/CD를 통한 자동화 사례까지 소개합니다."
 featuredImage: "./thumbnail.jpg"
 ---
 

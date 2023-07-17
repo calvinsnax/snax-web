@@ -1,1 +1,2 @@
-export { usePost } from "./usePost";
+export * from "./usePost";
+export * from "./useSiteMetadata";

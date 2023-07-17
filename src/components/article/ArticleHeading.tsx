@@ -23,6 +23,7 @@ export const ArticleHeading = (props: ArticleHeadingProps) => {
   const renderThumbnail = useMemo(() => {
     if (mdx?.frontmatter?.type === "blank") return null;
     if (!mdx?.frontmatter?.featuredImage?.publicURL) return null;
+
     return (
       <Box position="absolute" top={0} left={0} width="100%" height="100%">
         <ThumbnailImage

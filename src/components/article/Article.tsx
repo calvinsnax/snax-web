@@ -12,15 +12,17 @@ export const Article = (props: Props) => {
   const { data } = props;
 
   return (
-    <article>
-      <ArticleHeading data={data} />
-      <section>
-        <Container isArticle>
-          <ArticleContent>
-            <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
-          </ArticleContent>
-        </Container>
-      </section>
-    </article>
+    <>
+      <article>
+        <ArticleHeading data={data} />
+        <section>
+          <Container isArticle>
+            <ArticleContent>
+              <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
+            </ArticleContent>
+          </Container>
+        </section>
+      </article>
+    </>
   );
 };

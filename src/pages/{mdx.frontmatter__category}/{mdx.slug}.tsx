@@ -9,6 +9,7 @@ import { graphql, PageProps } from "gatsby";
  */
 import { Layout } from "../../components/base";
 import { Article } from "../../components/article";
+import { Seo } from "../../components/atom";
 
 export default function BlogPost(
   props: PageProps<Queries.getMdxPostByIdQueryQuery>
@@ -17,12 +18,15 @@ export default function BlogPost(
   const { mdx } = data;
 
   return (
-    <Layout
-      pageTitle={mdx?.frontmatter?.title}
-      $overlay={mdx?.frontmatter?.type !== "blank"}
+    <Seo
+      title={mdx?.frontmatter?.title}
+      image={mdx?.frontmatter?.featuredImage?.publicURL}
+      description={mdx?.frontmatter?.description}
     >
-      <Article data={data} />
-    </Layout>
+      <Layout $overlay={mdx?.frontmatter?.type !== "blank"}>
+        <Article data={data} />
+      </Layout>
+    </Seo>
   );
 }
 
@@ -36,6 +40,7 @@ export const pageQuery = graphql`
         category
         color
         type
+        description
         featuredImage {
           publicURL
           name

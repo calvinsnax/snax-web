@@ -14,39 +14,15 @@ import { Header, HeaderProps } from "./Header";
 import { Footer } from "./Footer";
 
 export interface LayoutProps extends HeaderProps {
-  pageTitle?: string;
   children: React.ReactNode;
   background?: string;
 }
 
 export const Layout = (props: LayoutProps) => {
-  const { pageTitle, children, $overlay, background } = props;
-  type SiteDataType = {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
-  const data = useStaticQuery<SiteDataType>(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const title = useMemo(() => {
-    if (!pageTitle) return data.site.siteMetadata.title;
-
-    return `${pageTitle} | ${data.site.siteMetadata.title}`;
-  }, [pageTitle, data.site.siteMetadata.title]);
+  const { children, $overlay, background } = props;
 
   return (
     <LayoutWrap $overlay={$overlay}>
-      <Helmet title={title} defer={false} />
       <GlobalStyles />
       <Header $overlay={$overlay} />
 

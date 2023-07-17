@@ -5,6 +5,7 @@ import { PostList } from "../components/post";
 import { HomeHead } from "../components/home";
 import { usePost } from "../hooks";
 import { PostListType } from "../components/post/PostList";
+import { Seo } from "../components/atom";
 
 const IndexPage = () => {
   const post = usePost();
@@ -19,10 +20,12 @@ const IndexPage = () => {
   }, [post]);
 
   return (
-    <Layout>
-      <HomeHead />
-      <PostList posts={computedPosts as PostListType} />
-    </Layout>
+    <Seo>
+      <Layout>
+        <HomeHead />
+        <PostList posts={computedPosts as PostListType} />
+      </Layout>
+    </Seo>
   );
 };
 
