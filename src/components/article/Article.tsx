@@ -20,6 +20,18 @@ export const Article = (props: Props) => {
             <ArticleContent>
               <MDXRenderer>{data.mdx?.body.toString() ?? ""}</MDXRenderer>
             </ArticleContent>
+            <div className="utterances utterances-frame"></div>
+            <script
+              src="https://utteranc.es/client.js"
+              issue-term="pathname"
+              async
+              {...{
+                repo: "calvinsnax/snax-web",
+                label: "댓글",
+                theme: "github-light",
+                crossOrigin: "anonymous",
+              }}
+            />
           </Container>
         </section>
       </article>
