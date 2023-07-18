@@ -46,7 +46,6 @@ export const ArticleContent = (props: ArticleContentProps) => {
 const ContentArea = styled.div`
   padding-top: 4rem;
   padding-bottom: 3rem;
-  margin-bottom: 2rem;
   border-bottom: 1px solid var(--color-grey-200);
 
   color: var(--color-grey-800);

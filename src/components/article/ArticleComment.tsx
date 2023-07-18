@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef, useEffect } from "react";
 import styled from "styled-components";
 import Giscus from "@giscus/react";
 
@@ -6,7 +6,7 @@ export const ArticleComment = () => {
   // const containerRef = createRef<HTMLDivElement>();
 
   // useEffect(() => {
-  //   if (containerRef?.current?.children.length) return;
+  //   // if (containerRef?.current?.children.length) return;
   //   const giscus = document.createElement("script");
   //   const attributes = {
   //     src: "https://giscus.app/client.js",
@@ -14,12 +14,12 @@ export const ArticleComment = () => {
   //     "data-repo-id": "R_kgDOHhdy4Q",
   //     "data-category": "Announcements",
   //     "data-category-id": "DIC_kwDOHhdy4c4CX9fd",
-  //     "data-mapping": "og:title",
+  //     "data-mapping": "title",
   //     "data-strict": "0",
   //     "data-reactions-enabled": "1",
   //     "data-emit-metadata": "0",
   //     "data-input-position": "top",
-  //     "data-theme": "preferred_color_scheme",
+  //     "data-theme": "light",
   //     "data-lang": "ko",
   //     crossOrigin: "anonymous",
   //     async: "true",
@@ -31,7 +31,6 @@ export const ArticleComment = () => {
   // }, []);
 
   // return <Comment ref={containerRef} id="comment" className="giscus" />;
-
   return (
     <Comment>
       <Giscus
@@ -40,17 +39,20 @@ export const ArticleComment = () => {
         repoId="R_kgDOHhdy4Q"
         category="Announcements"
         categoryId="DIC_kwDOHhdy4c4CX9fd"
-        mapping="og:title"
+        mapping="title"
+        strict="0"
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="preferred_color_scheme"
+        theme="light"
         lang="ko"
+        loading="lazy"
       />
     </Comment>
   );
 };
 
 const Comment = styled.div`
+  padding-top: 3rem;
   padding-bottom: 3rem;
 `;
