@@ -1,12 +1,10 @@
 import React, { createRef, useEffect } from "react";
 import styled from "styled-components";
-import Giscus from "@giscus/react";
 
 export const ArticleComment = () => {
   const containerRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    // if (containerRef?.current?.children.length) return;
     const giscus = document.createElement("script");
     const attributes = {
       src: "https://giscus.app/client.js",
@@ -31,24 +29,6 @@ export const ArticleComment = () => {
   }, []);
 
   return <Comment ref={containerRef} id="comment" className="giscus" />;
-  // return (
-  //   <Comment>
-  //     <Giscus
-  //       id="comments"
-  //       repo="calvinsnax/snax-web"
-  //       repoId="R_kgDOHhdy4Q"
-  //       category="Announcements"
-  //       categoryId="DIC_kwDOHhdy4c4CX9fd"
-  //       mapping="title"
-  //       strict="0"
-  //       reactionsEnabled="1"
-  //       emitMetadata="0"
-  //       inputPosition="top"
-  //       theme="light"
-  //       lang="ko"
-  //     />
-  //   </Comment>
-  // );
 };
 
 const Comment = styled.div`
