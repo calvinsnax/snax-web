@@ -34,4 +34,5 @@ export const ArticleComment = () => {
 const Comment = styled.div`
   padding-top: 3rem;
   padding-bottom: 3rem;
+  border-top: 1px solid var(--color-grey-200);
 `;

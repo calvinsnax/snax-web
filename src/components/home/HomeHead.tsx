@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 import { Box, Button, Container } from "../atom";
 import { AiFillGithub } from "react-icons/ai";
+import { IoArrowForwardSharp } from "react-icons/io5";
 import { mobileBreakpoint } from "../../lib/styles";
+import { Link } from "gatsby";
 
 export const HomeHead = () => {
   return (
@@ -32,20 +34,33 @@ export const HomeHead = () => {
               .
             </Box>
           </MainText>
-          <Button
-            as="a"
-            href="https://github.com/calvinsnax"
-            target="_blank"
-            color="black"
-            size="large"
-          >
-            <AiFillGithub
+          <Box display="flex">
+            <Button
+              as="a"
+              href="https://github.com/calvinsnax"
+              target="_blank"
+              color="black"
+              size="large"
               style={{
-                marginRight: "0.5rem",
+                marginRight: "0.75rem",
               }}
-            />
-            <span>Github</span>
-          </Button>
+            >
+              <AiFillGithub
+                style={{
+                  marginRight: "0.5rem",
+                }}
+              />
+              <span>Github</span>
+            </Button>
+            <Button as={Link} to="/about" color="grey" size="large">
+              <span>소개</span>
+              <IoArrowForwardSharp
+                style={{
+                  marginLeft: "0.5rem",
+                }}
+              />
+            </Button>
+          </Box>
         </Container>
       </Box>
     </Box>

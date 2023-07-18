@@ -1,13 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-interface Props {
-  category?: "스토리" | "디자인" | "개발";
-}
-
-export const usePost = () => {
+export const usePostsQuery = () => {
   const { allMdx } = useStaticQuery<Queries.getPostsQuery>(graphql`
     query getPosts {
-      allMdx(sort: { order: DESC, fields: frontmatter___date }) {
+      allMdx(
+        sort: { order: DESC, fields: frontmatter___date }
+        filter: { slug: { ne: "about/" } }
+      ) {
         edges {
           node {
             id

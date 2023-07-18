@@ -65,9 +65,9 @@ export const Header = (props: HeaderProps) => {
             <Box display="flex" alignItems="center" height="100%">
               <Nav>
                 <ul>
-                  {/* <li>
-                    <Link to="/cow-and-dog">소개</Link>
-                  </li> */}
+                  <li>
+                    <Link to="/about">소개</Link>
+                  </li>
                   <li>
                     <a href="https://github.com/calvinsnax" target="_blank">
                       <AiFillGithub fontSize="1.25rem" />
