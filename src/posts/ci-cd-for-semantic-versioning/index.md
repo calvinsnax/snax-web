@@ -37,7 +37,7 @@ NPM 패키지는 기본적으로 고유한 버전 번호를 가지고 있고, �
 
 Conventional commits은 위에서 언급한 버전 범프 자동화와 관련있습니다. 간단하게 설명하자면 커밋에 대한 일련의 규칙을 만들어서 이를 기반으로 유의적 버전에 기반한 버전을 만들어낼 수 있습니다. 물론 그 뿐만 아니라 커밋을 어떻게 작성할 것인지에 대한 고민을 덜어줍니다.
 
-Conventional commits을 사용할 때에는 [commitlint](https://commitlint.js.org/#/)**를 사용하는 것을 추천합니다. 내 커밋이 컨벤션을 제대로 지키고 있는지를 검사할 수 있습니다. 저희는 **[husky](https://typicode.github.io/husky/)를 활용해 작업자들이 컨벤션을 지켜야만 커밋 푸시할 수 있도록 했습니다. 이렇게하면 커밋 컨벤션에 대한 ‘휴먼 에러’를 최소화할 수 있습니다.
+Conventional commits을 사용할 때에는 [commitlint](https://commitlint.js.org/#/)를 사용하는 것을 추천합니다. 커밋 컨벤션에 대한 무결성을 지킬 수 있습니다. 저희는 [husky](https://typicode.github.io/husky/)를 활용해 작업자들이 컨벤션을 지켜야만 커밋 푸시할 수 있도록 했습니다. 이렇게하면 커밋 컨벤션에 대한 ‘휴먼 에러’를 최소화할 수 있어 좋습니다.
 
 ## [Github Actions](https://github.com/features/actions)를 활용한 완전 자동화
 
