@@ -46,7 +46,6 @@ export const ArticleComment = () => {
         inputPosition="top"
         theme="light"
         lang="ko"
-        loading="lazy"
       />
     </Comment>
   );
