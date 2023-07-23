@@ -28,7 +28,6 @@ export const HomeHead = () => {
               DESIGNER, <br />
               DEVELOPLER를 넘어,
             </Box>
-            {/* <br /> */}
             CREATOR를 넘보다
             <Box as="span" color="var(--color-primary-400)">
               .
@@ -70,7 +69,6 @@ export const HomeHead = () => {
 const MainText = styled.h1`
   position: relative;
   z-index: 1;
-  /* color: white; */
   font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.2;

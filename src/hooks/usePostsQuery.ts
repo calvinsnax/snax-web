@@ -15,10 +15,12 @@ export const usePostsQuery = () => {
               slug
               category
               color
+              description
               date(locale: "ko", formatString: "YYYY.MM.DD")
               featuredImage {
-                publicURL
-                name
+                childImageSharp {
+                  gatsbyImageData(width: 400, placeholder: BLURRED)
+                }
               }
             }
           }

@@ -1,26 +1,22 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { rgba } from "polished";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 
 import { Box } from "../atom";
 import { mobileBreakpoint } from "../../lib/styles";
 
 export interface PostItemProps {
-  slug?: string;
-  title?: string;
-  date?: string;
-  description?: string;
-  featuredImage?: {
-    publicURL: string;
-    name: string;
-  };
-  category?: string;
-  color?: string;
+  slug: string;
+  title: string;
+  date: string;
+  description: string;
+  featuredImage?: IGatsbyImageData;
+  category: string;
 }
 
 export const PostItem = (props: PostItemProps) => {
-  const { slug, title, date, featuredImage, category, color } = props;
+  const { slug, title, date, featuredImage, category } = props;
 
   const postPath = useMemo(() => {
     return `${category}${slug}`;
@@ -30,11 +26,16 @@ export const PostItem = (props: PostItemProps) => {
     <Li>
       <ItemLink to={postPath}>
         <Article>
-          {!!featuredImage?.publicURL && (
+          {!!featuredImage && (
             <ThumbnailArea>
-              <Thumbnail
-                src={featuredImage?.publicURL}
-                alt={featuredImage?.name}
+              <GatsbyImage
+                image={featuredImage}
+                alt={title || ""}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                }}
               />
             </ThumbnailArea>
           )}
@@ -103,16 +104,17 @@ const ThumbnailArea = styled.div`
     height: 0;
     padding-bottom: 56.25%;
   }
-`;
-const Thumbnail = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 0.75rem;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.75rem;
+  }
 `;
 
 const TextArea = styled(Box)`

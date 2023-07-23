@@ -10,20 +10,11 @@ import { Seo } from "../components/atom";
 const IndexPage = () => {
   const posts = usePostsQuery();
 
-  const computedPosts = useMemo(() => {
-    return posts.map((item) => {
-      return {
-        id: item.node.id,
-        frontmatter: item.node.frontmatter,
-      };
-    });
-  }, [posts]);
-
   return (
     <Seo>
       <Layout>
         <HomeHead />
-        <PostList posts={computedPosts as PostListType} />
+        <PostList posts={posts} />
       </Layout>
     </Seo>
   );

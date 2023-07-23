@@ -13,7 +13,7 @@ export interface PostType {
 export type PostListType = PostType[];
 
 interface Props {
-  posts: PostListType;
+  posts: Queries.getPostsQuery["allMdx"]["edges"];
 }
 
 export const PostList = (props: Props) => {
@@ -22,8 +22,19 @@ export const PostList = (props: Props) => {
   return (
     <Container>
       <Ul>
-        {posts.map((post) => (
-          <PostItem key={post.id} {...post.frontmatter} />
+        {posts?.map((post) => (
+          <PostItem
+            key={post.node.id}
+            slug={post.node.frontmatter?.slug || ""}
+            title={post.node.frontmatter?.title || ""}
+            date={post.node.frontmatter?.date || ""}
+            description={post.node.frontmatter?.description || ""}
+            featuredImage={
+              post.node.frontmatter?.featuredImage?.childImageSharp
+                ?.gatsbyImageData
+            }
+            category={post.node.frontmatter?.category || ""}
+          />
         ))}
       </Ul>
     </Container>
