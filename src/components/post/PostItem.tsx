@@ -26,7 +26,7 @@ export const PostItem = (props: PostItemProps) => {
     <Li>
       <ItemLink to={postPath}>
         <Article>
-          {/* {!!featuredImage && (
+          {!!featuredImage && (
             <ThumbnailArea>
               <GatsbyImage
                 image={featuredImage}
@@ -38,7 +38,7 @@ export const PostItem = (props: PostItemProps) => {
                 }}
               />
             </ThumbnailArea>
-          )} */}
+          )}
 
           <TextArea
             display="flex"
