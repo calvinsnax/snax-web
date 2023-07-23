@@ -19,7 +19,11 @@ export const usePostsQuery = () => {
               date(locale: "ko", formatString: "YYYY.MM.DD")
               featuredImage {
                 childImageSharp {
-                  gatsbyImageData(width: 400, placeholder: BLURRED)
+                  gatsbyImageData(
+                    width: 400
+                    placeholder: BLURRED
+                    quality: 100
+                  )
                 }
               }
             }
