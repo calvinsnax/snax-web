@@ -57,7 +57,7 @@ const ContentArea = styled.div`
     padding-bottom: 1rem;
   }
 
-  code {
+  code.language-text {
     padding: 0.125rem 0.25rem;
     color: var(--color-primary-400);
     background-color: var(--color-primary-100);
