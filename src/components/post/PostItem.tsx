@@ -1,7 +1,7 @@
+import { Link } from "gatsby";
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
-import { Link } from "gatsby";
 
 import { Box } from "../atom";
 import { mobileBreakpoint } from "../../lib/styles";
@@ -26,7 +26,7 @@ export const PostItem = (props: PostItemProps) => {
     <Li>
       <ItemLink to={postPath}>
         <Article>
-          {!!featuredImage && (
+          {/* {!!featuredImage && (
             <ThumbnailArea>
               <GatsbyImage
                 image={featuredImage}
@@ -38,7 +38,7 @@ export const PostItem = (props: PostItemProps) => {
                 }}
               />
             </ThumbnailArea>
-          )}
+          )} */}
 
           <TextArea
             display="flex"
