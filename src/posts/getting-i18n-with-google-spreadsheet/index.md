@@ -1,5 +1,5 @@
 ---
-slug: "/getting-i18n-with-google-api"
+slug: "/getting-i18n-with-google-spreadsheet"
 category: "develop"
 date: "2023-07-23"
 title: "구글스프레드시트를 200% 활용한 국제화(i18n) 자동화 사례"
